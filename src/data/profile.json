@@ -1,8 +1,11 @@
 {
   "name": "Vaibhav Jain",
+  "headline": "Security engineer",
   "role": "M.Sc. candidate in Digital Forensics and Information Security",
   "employer": "National Forensic Sciences University",
-  "focus": "Digital forensics and application security",
+  "focus": "Application security, digital forensics, and infrastructure security",
+  "openTo": "Application security, digital forensics, and platform engineering roles",
+  "availability": "Available now",
   "codingSince": "2011-06-01T00:00:00+05:30",
   "computingSince": 2005,
   "countriesVisited": 11,

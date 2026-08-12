@@ -50,10 +50,36 @@
   font-size: var(--text-lg);
   color: var(--color-fg);
   max-width: 46ch;
-  margin: 0 0 2rem;
+  margin: 0 0 1.25rem;
   line-height: var(--leading-snug);
   font-weight: var(--font-weight-normal);
   text-wrap: pretty;
+}
+
+/* Location and availability — data, so mono and label-cased like the rest of
+   the site's factual annotation. Availability takes `--color-signal` because it
+   is a live status that stops being true, which is what that token is for. */
+.hero-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.hero-status-item + .hero-status-item::before {
+  content: '·';
+  margin-right: 0.75rem;
+  color: var(--color-border);
+}
+
+.hero-status-item--live {
+  color: var(--color-signal);
 }
 
 .hero-highlight {

@@ -12,7 +12,9 @@ export interface Category {
 const skills: Skill[] = [
   // Offensive security
   {
-    title: 'Web Application Pentesting',
+    // Spelled out: "penetration testing" is the phrase screened for, while
+    // "VAPT" is largely India-market shorthand.
+    title: 'Web Application Penetration Testing',
     competency: 4,
     category: ['Security'],
   },
@@ -136,7 +138,8 @@ const skills: Skill[] = [
     category: ['Identity', 'Infrastructure'],
   },
   {
-    title: 'Entra ID',
+    // Carries the old name too: most job descriptions still say "Azure AD".
+    title: 'Entra ID (Azure AD)',
     competency: 3,
     category: ['Identity', 'Infrastructure'],
   },
@@ -186,6 +189,66 @@ const skills: Skill[] = [
     title: 'Git',
     competency: 4,
     category: ['Infrastructure'],
+  },
+  // Platform and networking, from the 2026 Ekvayu stint — deployment pipelines
+  // across environments, OPNsense, and VLAN segmentation.
+  {
+    title: 'CI/CD Pipelines',
+    competency: 3,
+    category: ['DevOps', 'Infrastructure'],
+  },
+  {
+    title: 'GitHub Actions',
+    competency: 3,
+    category: ['DevOps', 'Infrastructure'],
+  },
+  {
+    title: 'OPNsense',
+    competency: 3,
+    category: ['Networking', 'Security'],
+  },
+  {
+    title: 'VLAN Segmentation',
+    competency: 3,
+    category: ['Networking'],
+  },
+  {
+    title: 'Firewall Configuration',
+    competency: 4,
+    category: ['Networking', 'Security'],
+  },
+  {
+    title: 'Network Security',
+    competency: 3,
+    category: ['Networking', 'Security'],
+  },
+  // Named for what the work already evidences: the Hoonar auth API was taken to
+  // OWASP ASVS Level 2, KK Society was an RBAC and broken-access-control audit,
+  // and the IR project was memory forensics with IOC extraction.
+  {
+    title: 'REST API Design',
+    competency: 4,
+    category: ['Web Development'],
+  },
+  {
+    title: 'OWASP ASVS',
+    competency: 3,
+    category: ['Security'],
+  },
+  {
+    title: 'OWASP Top 10',
+    competency: 4,
+    category: ['Security'],
+  },
+  {
+    title: 'Role-Based Access Control',
+    competency: 4,
+    category: ['Identity', 'Security'],
+  },
+  {
+    title: 'Incident Response',
+    competency: 3,
+    category: ['Forensics', 'Security'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 

@@ -66,6 +66,22 @@ const entries: Project[] = [
     featured: true,
   },
   {
+    // Not `featured`: it earns a place in the list, but should not displace
+    // client work from the homepage's three slots. Flip the flag to lead with it.
+    title: 'This site',
+    subtitle: 'Statically exported Next.js portfolio',
+    date: '2026-08-12',
+    desc: 'The site you are reading, built as a static export with no server runtime. Notable less for the pages than for the discipline underneath: a live readout that was re-rendering React 40 times a second was moved to an out-of-band ref write, with a regression test pinning the absence of re-renders; the build-time type check is proven to gate the build by injecting a real type error; dependency overrides were verified inert by diffing the emitted CSS byte-for-byte; and a post-build integrity gate checks robots directives, canonicals, share metadata, local images, internal links and anchor fragments across every exported page.',
+    tech: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Vitest',
+      'GitHub Actions',
+      'CI/CD',
+    ],
+  },
+  {
     title: 'Wikipedia Search Engine',
     subtitle: 'tf-idf and PageRank over a local corpus',
     link: 'https://github.com/VaibhavJain2609/Wikipedia_Search_Engine',

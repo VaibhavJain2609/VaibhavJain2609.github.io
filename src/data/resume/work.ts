@@ -12,6 +12,26 @@ export interface Position {
 }
 
 const work: Position[] = [
+  // TODO(vaibhav): confirm before this ships. The job title is inferred from
+  // the work described rather than supplied, and the dates are month-accurate
+  // only ("June to July 2026"). The highlights deliberately carry no metrics,
+  // because none were given — add the numbers you can defend, as the other
+  // entries do.
+  {
+    name: 'Ekvayu Tech Private Limited',
+    position: 'DevOps and Network Security Intern',
+    url: 'https://ekvayu.com',
+    startDate: '2026-06-01',
+    endDate: '2026-07-31',
+    summary: `A second stint at <a href='https://ekvayu.com'>Ekvayu Tech</a>, on the build and
+    network side rather than the offensive one. I owned deployment pipelines across environments
+    and the firewall and segmentation work underneath them.`,
+    highlights: [
+      'Built and maintained build and deployment pipelines across multiple environments, standardising promotion from development through to production.',
+      'Configured and hardened OPNsense firewalls, covering rule design and security policy configuration.',
+      'Designed and implemented VLAN segmentation to isolate network segments and limit lateral movement.',
+    ],
+  },
   {
     name: 'Praveen Aggarwal Chartered Accountants',
     position: 'IT Contractor',
