@@ -12,16 +12,22 @@ export interface Position {
 }
 
 const work: Position[] = [
-  // TODO(vaibhav): confirm before this ships. The job title is inferred from
-  // the work described rather than supplied, and the dates are month-accurate
-  // only ("June to July 2026"). The highlights deliberately carry no metrics,
-  // because none were given — add the numbers you can defend, as the other
-  // entries do.
+  // TODO(vaibhav): add metrics. This is the only entry with no numbers in it,
+  // on a resume where every other role quantifies its outcomes — how many
+  // environments the pipelines covered, how many VLANs, how many firewall
+  // policies. The figures are noted elsewhere and were not to hand when this
+  // was written.
+  //
+  // The awarded title was the generic "Intern", so the descriptor is a choice.
+  // This one is picked for how it screens: "DevOps" and "Network Security" are
+  // both terms recruiters actually filter on, and both are honestly claimed by
+  // the bullets below. The alternative considered, "System Architecture
+  // Intern", is near-unsearchable and reads as overclaim from an intern.
   {
     name: 'Ekvayu Tech Private Limited',
     position: 'DevOps and Network Security Intern',
     url: 'https://ekvayu.com',
-    startDate: '2026-06-01',
+    startDate: '2026-06-12',
     endDate: '2026-07-31',
     summary: `A second stint at <a href='https://ekvayu.com'>Ekvayu Tech</a>, on the build and
     network side rather than the offensive one. I owned deployment pipelines across environments
