@@ -1,14 +1,17 @@
 import Link from 'next/link';
 
 import ContactIcons from '@/components/Contact/ContactIcons';
-import work from '@/data/resume/work';
+import profile from '@/data/profile.json';
 import routes from '@/data/routes';
 import { AUTHOR_NAME } from '@/lib/utils';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Footer() {
-  const currentRole = `${work[0].position} at ${work[0].name}`;
+  // Stated from the profile, not from `work[0]`. The most recent resume entry
+  // is not necessarily current, and reading it as one billed a finished
+  // contract as an ongoing job on every page of the site.
+  const currentRole = `${profile.role} at ${profile.employer}`;
 
   return (
     <footer className="site-footer-new">
@@ -23,7 +26,7 @@ export default function Footer() {
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
-                href="https://github.com/mldangelo/personal-site"
+                href="https://github.com/vaibhavjain2609/personal-site"
                 target="_blank"
                 rel="noopener noreferrer"
               >

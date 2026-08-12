@@ -17,7 +17,7 @@ import { AUTHOR_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Resume',
-  description: `${AUTHOR_NAME}'s Resume. OpenAI, Promptfoo, Smile ID, Arthena, Matroid, Stanford ICME, YC alum.`,
+  description: `${AUTHOR_NAME}'s resume — application security, digital forensics, and full-stack engineering. NFSU, Ekvayu Tech, Sacramento State.`,
   path: '/resume/',
 });
 
@@ -28,13 +28,23 @@ export default function ResumePage() {
         <header className="resume-header">
           <h1 className="resume-title">Resume</h1>
           <p className="resume-summary">
-            Engineering leader with 15+ years building products across AI,
-            security, and infrastructure. I&apos;m currently a Member of the
-            Technical Staff at OpenAI, working on Promptfoo and Codex Security.
-            I help secure AI systems and use AI to find software
-            vulnerabilities. I co-founded Promptfoo before it joined OpenAI in
-            2026. Stanford MS, YC alum, previously VP Engineering.
+            Security engineer working across application security and digital
+            forensics, currently reading for an M.Sc. in Digital Forensics and
+            Information Security at NFSU. I have run VAPT against a commercial
+            security product, built identity and remote-access infrastructure
+            for a firm handling confidential client records, and shipped the
+            kind of full-stack systems I now audit.
           </p>
+          {/* A recruiter's first action is to forward a PDF to a hiring
+              manager. Without this they have to print the page themselves. */}
+          <a
+            className="resume-download"
+            href="/vaibhav-jain-resume.pdf"
+            download
+          >
+            Download PDF
+            <span aria-hidden="true"> ↓</span>
+          </a>
           {/* Print-only, but real markup rather than CSS `content`, so it is
               selectable, linkable, and reads from the shared profile. The
               screen layout carries these in the footer, which print hides. */}
@@ -43,7 +53,9 @@ export default function ResumePage() {
             <span aria-hidden="true"> · </span>
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
             <span aria-hidden="true"> · </span>
-            <a href="https://github.com/mldangelo">github.com/mldangelo</a>
+            <a href="https://github.com/vaibhavjain2609">
+              github.com/vaibhavjain2609
+            </a>
           </address>
         </header>
 

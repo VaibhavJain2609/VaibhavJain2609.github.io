@@ -269,7 +269,8 @@ describe('verify-export', () => {
     ['Open Graph title', 'property="og:title"', 'og:title'],
     ['Open Graph site name', 'property="og:site_name"', 'og:site_name'],
     ['Twitter card', 'name="twitter:card"', 'twitter:card'],
-    ['Twitter creator', 'name="twitter:creator"', 'twitter:creator'],
+    // No `twitter:creator` row: there is no X account, so the verifier no
+    // longer requires a tag that would carry a false attribution.
   ])('rejects a missing %s', (_, attribute, tagName) => {
     const root = createFixture();
     mutate(root, 'out/about/index.html', (html) =>
@@ -283,37 +284,10 @@ describe('verify-export', () => {
     );
   });
 
-  it('rejects draft and missing routes in the sitemap', () => {
-    const root = createFixture();
-    mutate(root, 'out/sitemap.xml', (xml) =>
-      xml.replace(
-        '</urlset>',
-        '<url><loc>https://example.com/writing/secret-draft/</loc></url></urlset>',
-      ),
-    );
-
-    const result = runVerifier(root);
-    expect(result.status).toBe(1);
-    expect(result.output).toContain(
-      'sitemap.xml\n    exposes draft route: /writing/secret-draft/',
-    );
-  });
-
-  it('rejects draft routes in the RSS feed', () => {
-    const root = createFixture();
-    mutate(root, 'out/feed.xml', (xml) =>
-      xml.replace(
-        '</channel>',
-        '<item><link>https://example.com/writing/secret-draft/</link></item></channel>',
-      ),
-    );
-
-    const result = runVerifier(root);
-    expect(result.status).toBe(1);
-    expect(result.output).toContain(
-      'feed.xml\n    exposes draft route: /writing/secret-draft/',
-    );
-  });
+  // The draft-exposure cases lived here. They injected a `/writing/<slug>/`
+  // route into the sitemap and the RSS feed and required the verifier to
+  // reject it. Both the draft pipeline and the feed are gone; the sitemap's
+  // route coverage is still asserted by the case below.
 
   it('requires the sitemap to cover every indexable route', () => {
     const root = createFixture();

@@ -18,25 +18,22 @@ const routes: Route[] = [
     path: '/about',
   },
   {
+    // Promoted to primary navigation: the project write-ups are what a reader
+    // is here to evaluate, and they were previously buried as "Archive".
+    label: 'Projects',
+    path: '/projects',
+  },
+  {
     label: 'Resume',
     path: '/resume',
-  },
-  {
-    label: 'Writing',
-    path: '/writing',
-  },
-  {
-    label: 'Stats',
-    path: '/stats',
-    primary: false,
   },
   {
     label: 'Contact',
     path: '/contact',
   },
   {
-    label: 'Archive',
-    path: '/projects',
+    label: 'Stats',
+    path: '/stats',
     primary: false,
   },
 ];

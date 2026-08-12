@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import profile from '@/data/profile.json';
 import Personal from '../../Stats/Personal';
 
 describe('Personal', () => {
@@ -18,41 +19,46 @@ describe('Personal', () => {
     expect(screen.getByRole('table')).toBeInTheDocument();
   });
 
-  it('displays the current age label', () => {
+  it('displays the years-coding label', () => {
     render(<Personal />);
 
-    expect(screen.getByText('Current age')).toBeInTheDocument();
+    expect(screen.getByText('Years writing code')).toBeInTheDocument();
   });
 
   it('displays countries visited', () => {
     render(<Personal />);
 
+    // Asserted against the profile rather than literals, so this pins the
+    // wiring instead of one person's biography.
     expect(screen.getByText('Countries visited')).toBeInTheDocument();
-    expect(screen.getByText('53')).toBeInTheDocument();
+    expect(
+      screen.getByText(String(profile.countriesVisited)),
+    ).toBeInTheDocument();
   });
 
   it('displays current city', () => {
     render(<Personal />);
 
     expect(screen.getByText('Current city')).toBeInTheDocument();
-    expect(screen.getByText('New York, NY')).toBeInTheDocument();
+    expect(screen.getByText(profile.currentCity)).toBeInTheDocument();
   });
 
   it('has a link for countries visited', () => {
     render(<Personal />);
 
-    const link = screen.getByRole('link', { name: /53/i });
+    const link = screen.getByRole('link', {
+      name: String(profile.countriesVisited),
+    });
     expect(link).toHaveAttribute(
       'href',
       'https://www.google.com/maps/d/embed?mid=1iBBTscqateQ93pWFVfHCUZXoDu8&z=2',
     );
   });
 
-  it('updates age over time', async () => {
+  it('updates the live readout over time', async () => {
     render(<Personal />);
 
-    // Get initial age text
-    const ageCell = screen.getByText('Current age').closest('tr');
+    const ageCell = screen.getByText('Years writing code').closest('tr');
     expect(ageCell).toBeInTheDocument();
 
     // Advance timer to trigger age update
@@ -60,7 +66,8 @@ describe('Personal', () => {
       vi.advanceTimersByTime(50);
     });
 
-    // Age should still be displayed (value changes but component renders)
-    expect(screen.getByText('Current age')).toBeInTheDocument();
+    // The readout should still be present: the value changes out of band via
+    // `textContent`, so the row React renders never disappears.
+    expect(screen.getByText('Years writing code')).toBeInTheDocument();
   });
 });

@@ -4,14 +4,10 @@ import Link from 'next/link';
 import { SchemaGraph } from '@/components/Schema';
 import Hero from '@/components/Template/Hero';
 import PageWrapper from '@/components/Template/PageWrapper';
+import projects from '@/data/projects';
+import { createHeadingId } from '@/lib/anchors';
 import { HOME_URL, profilePageNode } from '@/lib/schema';
-import {
-  AUTHOR_NAME,
-  formatDate,
-  SITE_DESCRIPTION,
-  SITE_URL,
-} from '@/lib/utils';
-import { getWritingItems } from '@/lib/writing';
+import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
@@ -21,9 +17,12 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const recentWriting = getWritingItems()
-    .filter((item) => item.date)
-    .slice(0, 3);
+  // The homepage leads with work rather than a list of links elsewhere. Which
+  // projects surface is decided in `src/data/projects.ts`, so this stays
+  // data-driven and new entries place themselves. That array is sorted newest
+  // first, so taking three fills the row with the genuinely most recent work
+  // rather than whichever three were typed in first.
+  const featured = projects.filter((project) => project.featured).slice(0, 3);
 
   return (
     <PageWrapper mainClassName="page-main--hero">
@@ -31,49 +30,34 @@ export default function HomePage() {
         nodes={[profilePageNode({ url: HOME_URL, name: AUTHOR_NAME })]}
       />
       <Hero />
-      <section className="home-writing" aria-labelledby="home-writing-title">
-        <div className="home-writing-header">
+      <section className="home-featured" aria-labelledby="home-featured-title">
+        <div className="home-featured-header">
           <div>
-            <span className="home-section-kicker">Recent signal</span>
-            <h2 id="home-writing-title">Latest writing</h2>
+            <span className="home-section-kicker">Selected work</span>
+            <h2 id="home-featured-title">Recent projects</h2>
           </div>
-          <Link href="/writing/" className="home-writing-all">
+          <Link href="/projects/" className="home-featured-all">
             View all
           </Link>
         </div>
-        <div className="home-writing-list">
-          {recentWriting.map((item) => {
-            const content = (
-              <>
-                <span className="home-writing-meta">
-                  {formatDate(item.date)} · {item.source}
-                </span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </>
-            );
-
-            return item.isExternal ? (
-              <a
-                key={item.url}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="home-writing-item"
-              >
-                {content}
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            ) : (
-              <Link
-                key={item.url}
-                href={item.url}
-                className="home-writing-item"
-              >
-                {content}
-              </Link>
-            );
-          })}
+        <div className="home-featured-list">
+          {featured.map((project) => (
+            <Link
+              key={project.title}
+              // Deep link to the card itself. Three differently-named links
+              // that all landed on `/projects/` left the reader to find the
+              // one they had just clicked.
+              href={`/projects/#${createHeadingId(project.title)}`}
+              className="home-featured-item"
+            >
+              <span className="home-featured-meta">
+                {project.date.slice(0, 4)}
+                {project.tech?.length ? ` · ${project.tech[0]}` : ''}
+              </span>
+              <h3>{project.title}</h3>
+              <p>{project.subtitle ?? project.desc}</p>
+            </Link>
+          ))}
         </div>
       </section>
     </PageWrapper>

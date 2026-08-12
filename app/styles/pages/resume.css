@@ -170,6 +170,34 @@
 
 /* Printed resumes need contact details, which live in the footer on screen.
    Shown only by print.css. */
+/* Quiet secondary action. A recruiter's first move is to forward a PDF, so the
+   link has to be findable without competing with the resume itself.
+   `background-image: none` opts out of the accent underline that
+   `base/links.css` paints on links inside prose. */
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  margin-top: 1.25rem;
+  padding: 0.5rem 0.9rem;
+  border: var(--rule) solid var(--color-border);
+  background-image: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-fg);
+  text-decoration: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.resume-download:hover,
+.resume-download:focus-visible {
+  border-color: var(--color-fg-bold);
+  color: var(--color-accent);
+}
+
 .resume-print-contact {
   display: none;
 }

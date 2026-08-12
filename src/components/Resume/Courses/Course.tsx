@@ -8,7 +8,9 @@ export default function Course({ data }: CourseProps) {
   return (
     <li className="course-container">
       <a href={data.link}>
-        <span className="course-number">{data.number}:</span>
+        {/* Not every institution publishes a per-course code. Without this
+            guard those rows rendered a literal "undefined:" prefix. */}
+        {data.number && <span className="course-number">{data.number}:</span>}
         <span className="course-name">{data.title}</span>
       </a>
     </li>

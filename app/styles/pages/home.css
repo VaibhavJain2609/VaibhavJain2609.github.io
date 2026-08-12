@@ -239,13 +239,13 @@
    RECENT WRITING — proof of current work
    ======================================== */
 
-.home-writing {
+.home-featured {
   margin-top: 5rem;
   padding-top: 1.5rem;
   border-top: var(--rule-strong) solid var(--color-fg-bold);
 }
 
-.home-writing-header {
+.home-featured-header {
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -254,7 +254,7 @@
 }
 
 .home-section-kicker,
-.home-writing-meta {
+.home-featured-meta {
   display: block;
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -263,7 +263,7 @@
   color: var(--color-fg-light);
 }
 
-.home-writing h2 {
+.home-featured h2 {
   margin: 0.35rem 0 0;
   font-family: var(--font-display);
   font-size: var(--text-xl);
@@ -272,7 +272,7 @@
   letter-spacing: var(--tracking-tight);
 }
 
-.home-writing-all {
+.home-featured-all {
   flex: none;
   padding: 0.5rem 0;
   font-family: var(--font-mono);
@@ -283,13 +283,13 @@
   background-image: none;
 }
 
-.home-writing-list {
+.home-featured-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: var(--rule) solid var(--color-border);
 }
 
-.home-writing-item {
+.home-featured-item {
   min-width: 0;
   padding: 1.5rem;
   color: inherit;
@@ -300,21 +300,21 @@
   transition: background-color var(--duration-instant) var(--ease-out);
 }
 
-.home-writing-item:first-child {
+.home-featured-item:first-child {
   padding-left: 0;
 }
 
-.home-writing-item:last-child {
+.home-featured-item:last-child {
   padding-right: 0;
   border-right: 0;
 }
 
-.home-writing-item:hover,
-.home-writing-item:focus-visible {
+.home-featured-item:hover,
+.home-featured-item:focus-visible {
   background-color: var(--color-surface-subtle);
 }
 
-.home-writing-item h3 {
+.home-featured-item h3 {
   margin: 0.75rem 0 0.5rem;
   font-family: var(--font-display);
   font-size: var(--text-md);
@@ -323,12 +323,12 @@
   color: var(--color-fg-bold);
 }
 
-.home-writing-item:hover h3,
-.home-writing-item:focus-visible h3 {
+.home-featured-item:hover h3,
+.home-featured-item:focus-visible h3 {
   color: var(--color-accent);
 }
 
-.home-writing-item p {
+.home-featured-item p {
   margin: 0;
   font-size: var(--text-sm);
   line-height: var(--leading-snug);
@@ -336,17 +336,17 @@
 }
 
 @media (max-width: 760px) {
-  .home-writing {
+  .home-featured {
     margin-top: 3.5rem;
   }
 
-  .home-writing-list {
+  .home-featured-list {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .home-writing-item,
-  .home-writing-item:first-child,
-  .home-writing-item:last-child {
+  .home-featured-item,
+  .home-featured-item:first-child,
+  .home-featured-item:last-child {
     padding: 1.25rem 0;
     border-right: 0;
   }

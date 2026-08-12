@@ -75,10 +75,25 @@
   border: var(--rule) solid var(--color-border);
   box-shadow: none;
   transition: border-color var(--duration-fast) var(--ease-out);
+  /* The header is fixed, so an anchored card would otherwise land under it. */
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+
+@media (max-width: 735px) {
+  .project-card {
+    scroll-margin-top: calc(var(--header-height-mobile) + 1rem);
+  }
 }
 
 .project-card--linked:hover {
   border-color: var(--color-fg-bold);
+}
+
+/* Arriving from a homepage deep link, the card has to identify itself —
+   scrolling to roughly the right place is not the same as pointing at
+   something. Structural accent, not decoration. */
+.project-card:target {
+  border-color: var(--color-accent);
 }
 
 /* Full card link wrapper */
@@ -135,6 +150,32 @@
   .project-card-image img {
     filter: none;
   }
+}
+
+/* Drawn cover for a project with no screenshot. Client systems and coursework
+   have nothing public to show, and a stock photo would assert something untrue
+   about the work — so the card carries the project's initials instead, in the
+   same aspect box so the grid keeps its rhythm. */
+.project-card-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--color-surface-subtle);
+  border-bottom: var(--rule) solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-border-alt);
+  transition: color var(--duration-normal) var(--ease-out);
+  user-select: none;
+}
+
+.project-card--linked:hover .project-card-cover,
+.project-card--linked:focus-within .project-card-cover {
+  color: var(--color-fg-light);
 }
 
 .project-card-content {
@@ -522,6 +563,12 @@
 .course-container a:hover,
 .course-container a:focus-visible {
   background: var(--color-surface-subtle);
+}
+
+/* Not every institution publishes a per-course code. Without this the title
+   of a code-less row would land in the 5.5rem gutter column and wrap. */
+.course-container a:not(:has(.course-number)) {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .courses .course-number {

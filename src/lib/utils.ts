@@ -4,18 +4,24 @@
 
 import profile from '@/data/profile.json';
 
-// Site configuration
-export const SITE_URL = 'https://mldangelo.com';
+/**
+ * Site configuration.
+ *
+ * `SITE_URL` is the one place the canonical origin is declared: the sitemap,
+ * JSON-LD, and every page's `alternates.canonical` derive from it. To move the
+ * site to a custom domain, change this value and add a matching `public/CNAME`
+ * — nothing else needs to change.
+ */
+export const SITE_URL = 'https://vaibhavjain2609.github.io';
 export const AUTHOR_NAME = profile.name;
-export const TWITTER_HANDLE = '@dangelosaurus';
 /**
  * The portrait. Used for JSON-LD `image`, where the value should be a picture
  * of the person, not a designed card.
  */
 export const SITE_IMAGE_PATH = '/images/me.jpg';
 export const SITE_IMAGE_DIMENSIONS = {
-  width: 1024,
-  height: 1024,
+  width: 1200,
+  height: 1200,
 } as const;
 
 /**
@@ -35,7 +41,7 @@ export const SHARE_IMAGE_DIMENSIONS = {
 
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
 export const SITE_DESCRIPTION =
-  'Member of the Technical Staff at OpenAI, working on Promptfoo and Codex Security. Co-founded Promptfoo before it joined OpenAI in 2026.';
+  'Security engineer and M.Sc. candidate in Digital Forensics and Information Security at NFSU. I break web applications, analyse malware, and build the systems I audit.';
 
 // Image dimension constants
 export const PROJECT_IMAGE = {

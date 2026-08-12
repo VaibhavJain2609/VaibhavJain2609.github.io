@@ -10,24 +10,23 @@ describe('about data', () => {
 
   it('contains the intro section', () => {
     expect(aboutMarkdown).toContain('# Intro');
-    expect(aboutMarkdown).toContain('OpenAI');
-    expect(aboutMarkdown).toContain('Promptfoo');
+    expect(aboutMarkdown).toContain('Digital Forensics and Information');
+    expect(aboutMarkdown).toContain('Ekvayu Tech');
   });
 
   it('contains the history section', () => {
     expect(aboutMarkdown).toContain('# Some History');
-    expect(aboutMarkdown).toContain('MS-DOS');
+    expect(aboutMarkdown).toContain('Woodstock School');
   });
 
   it('contains the likes section', () => {
     expect(aboutMarkdown).toContain('# I Like');
-    expect(aboutMarkdown).toContain('Running');
-    expect(aboutMarkdown).toContain('Skiing');
+    expect(aboutMarkdown).toContain('Basketball');
   });
 
   it('contains the travel section', () => {
     expect(aboutMarkdown).toContain('# Travel / Geography');
-    expect(aboutMarkdown).toContain('Buffalo, New York');
+    expect(aboutMarkdown).toContain('Ghaziabad, India');
   });
 
   it('contains the fun facts section', () => {
@@ -39,17 +38,16 @@ describe('about data', () => {
     expect(aboutMarkdown).toContain('Staying curious');
   });
 
-  it('contains the admired websites section', () => {
-    expect(aboutMarkdown).toContain('# Websites from People I Admire');
-  });
-
   it('contains valid markdown links', () => {
     // Check for markdown link format [text](url)
     const linkRegex = /\[.+?\]\(.+?\)/g;
     const links = aboutMarkdown.match(linkRegex);
 
+    // A floor, not a target. The old threshold of 10 was calibrated to a
+    // closing list of seventeen admired personal websites; padding the page
+    // with links to satisfy a number would be the wrong fix.
     expect(links).not.toBeNull();
-    expect(links!.length).toBeGreaterThan(10);
+    expect(links!.length).toBeGreaterThanOrEqual(3);
   });
 
   it('contains properly formatted headers', () => {

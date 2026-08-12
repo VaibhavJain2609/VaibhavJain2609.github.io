@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AUTHOR_NAME } from '@/lib/utils';
 import Navigation from '../../Template/Navigation';
 
 // Mock usePathname to control active state
@@ -31,8 +32,10 @@ describe('Navigation', () => {
 
   it('renders the logo link to home', () => {
     render(<Navigation />);
+    // The label is built from the profile name, so match on that rather than
+    // on a literal.
     const logo = screen.getByRole('link', {
-      name: /michael d'angelo.*home/i,
+      name: new RegExp(`${AUTHOR_NAME}.*home`, 'i'),
     });
     expect(logo).toHaveAttribute('href', '/');
   });
@@ -49,12 +52,10 @@ describe('Navigation', () => {
     render(<Navigation />);
 
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /projects/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /resume/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /writing/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
-    expect(
-      screen.queryByRole('link', { name: /archive/i }),
-    ).not.toBeInTheDocument();
+    // Stats is the one remaining `primary: false` route.
     expect(
       screen.queryByRole('link', { name: /stats/i }),
     ).not.toBeInTheDocument();

@@ -56,10 +56,18 @@ describe('work data', () => {
     }
   });
 
-  // Resume should show at least one current/active position
-  it('has at least one current position (no endDate)', () => {
-    const currentJobs = work.filter((job) => !job.endDate);
-    expect(currentJobs.length).toBeGreaterThanOrEqual(1);
+  // An open-ended role is a life circumstance, not a data invariant: someone
+  // studying full time has none, and that is a valid resume. What is worth
+  // pinning is that a closed role cannot end before it started.
+  it('closed positions end no earlier than they started', () => {
+    for (const job of work) {
+      if (!job.endDate) continue;
+
+      expect(Number.isNaN(Date.parse(job.endDate))).toBe(false);
+      expect(Date.parse(job.endDate)).toBeGreaterThanOrEqual(
+        Date.parse(job.startDate),
+      );
+    }
   });
 
   it('highlights are arrays when present', () => {

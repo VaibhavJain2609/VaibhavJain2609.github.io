@@ -10,12 +10,10 @@
  * Run with `npm run verify-export` after `npm run build`.
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { basename, extname, join, relative, resolve, sep } from 'node:path';
-import matter from 'gray-matter';
+import { extname, join, relative, resolve, sep } from 'node:path';
 
 const ROOT = process.cwd();
 const OUT = resolve(ROOT, 'out');
-const CONTENT = resolve(ROOT, 'content/writing');
 
 const failures = [];
 const fail = (page, message) => failures.push({ page, message });
@@ -145,19 +143,20 @@ if (pages.length === 0) {
   process.exit(1);
 }
 
-const draftSlugs = walk(CONTENT, (name) => name.endsWith('.md'))
-  // Use the same YAML parser as the application. A line regex misses valid
-  // forms such as `draft: true # keep private`, weakening the fault-injection
-  // gate precisely when the route layer regresses.
-  .filter((path) => matter(readFileSync(path, 'utf8')).data.draft === true)
-  .map((path) => basename(path, '.md'));
-
-function isDraftPath(pathname) {
-  const route = routeForPublicPath(pathname) ?? pathname;
-  return draftSlugs.some(
-    (slug) =>
-      route === `/writing/${slug}` || route.startsWith(`/writing/${slug}/`),
-  );
+/**
+ * Whether a path belongs to an unpublished draft.
+ *
+ * This used to parse `content/writing/*.md` frontmatter and fail the build if
+ * a `draft: true` post reached the export — a draft once shipped carrying
+ * `robots: index, follow`. That directory no longer exists, so nothing can be
+ * a draft and this is deliberately constant.
+ *
+ * Kept as a function rather than unpicked from its four call sites: if
+ * long-form content is reintroduced, restoring the real check is a one-function
+ * change, and the surrounding link, sitemap, and robots logic stays intact.
+ */
+function isDraftPath() {
+  return false;
 }
 
 const records = pages.map((file) => {
@@ -325,8 +324,9 @@ const REQUIRED_SOCIAL_META = [
   ['property', 'og:image'],
   ['property', 'og:image:alt'],
   ['name', 'twitter:card'],
-  ['name', 'twitter:site'],
-  ['name', 'twitter:creator'],
+  // No `twitter:site` or `twitter:creator`: there is no X account to
+  // attribute, and inventing a handle to satisfy this list would put a false
+  // attribution on every page.
   ['name', 'twitter:title'],
   ['name', 'twitter:description'],
   ['name', 'twitter:image'],
@@ -573,26 +573,6 @@ if (!existsSync(sitemapPath)) {
   }
 }
 
-const feedPath = join(OUT, 'feed.xml');
-if (!existsSync(feedPath)) {
-  fail('feed.xml', 'missing from export');
-} else {
-  const feed = readFileSync(feedPath, 'utf8');
-  const textLinks = [...feed.matchAll(/<link>\s*([^<]+?)\s*<\/link>/gi)].map(
-    (match) => match[1],
-  );
-  const guids = [...feed.matchAll(/<guid\b[^>]*>\s*([^<]+?)\s*<\/guid>/gi)].map(
-    (match) => match[1],
-  );
-  const atomLinks = tags(feed, 'atom:link')
-    .map((tag) => attribute(tag, 'href'))
-    .filter((href) => href !== undefined);
-
-  for (const url of [...textLinks, ...guids, ...atomLinks]) {
-    validateXmlUrl(url, 'feed.xml');
-  }
-}
-
 if (failures.length > 0) {
   console.error(`\nverify-export: ${failures.length} problem(s)\n`);
   for (const { page, message } of failures) {
@@ -603,5 +583,5 @@ if (failures.length > 0) {
 
 console.log(
   `verify-export: ${pages.length} pages OK ` +
-    '(drafts, robots, ids/fragments, canonicals, complete share metadata, local images, internal links, sitemap/RSS)',
+    '(robots, ids/fragments, canonicals, complete share metadata, local images, internal links, sitemap)',
 );

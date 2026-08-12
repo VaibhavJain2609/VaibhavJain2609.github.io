@@ -6,7 +6,6 @@ import {
   SHARE_IMAGE_DIMENSIONS,
   SHARE_IMAGE_PATH,
   SITE_URL,
-  TWITTER_HANDLE,
 } from './utils';
 
 interface PageMetadataOptions {
@@ -43,10 +42,10 @@ export const sharedOpenGraph: Metadata['openGraph'] = {
   ],
 };
 
+// No `site` or `creator`: there is no X account to attribute. The card still
+// renders from `card` and `images` alone.
 export const sharedTwitter: Metadata['twitter'] = {
   card: 'summary_large_image',
-  site: TWITTER_HANDLE,
-  creator: TWITTER_HANDLE,
   images: [SHARE_IMAGE_PATH],
 };
 

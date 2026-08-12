@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import profile from '@/data/profile.json';
+import { AUTHOR_NAME } from '@/lib/utils';
 import Footer from '../../Template/Footer';
 
 describe('Footer', () => {
@@ -14,9 +16,11 @@ describe('Footer', () => {
   it('displays the name and role', () => {
     render(<Footer />);
 
-    expect(screen.getByText("Michael D'Angelo")).toBeInTheDocument();
+    // Asserted against the profile rather than literals, so this pins the
+    // wiring instead of one person's job title.
+    expect(screen.getByText(AUTHOR_NAME)).toBeInTheDocument();
     expect(
-      screen.getByText('Member of the Technical Staff at OpenAI'),
+      screen.getByText(`${profile.role} at ${profile.employer}`),
     ).toBeInTheDocument();
   });
 
@@ -46,9 +50,8 @@ describe('Footer', () => {
       'href',
       '/resume',
     );
-    // Labelled "Archive" to match the nav and the page's own heading;
-    // the route stays /projects.
-    expect(screen.getByRole('link', { name: /archive/i })).toHaveAttribute(
+    // Labelled "Projects" to match the nav and the page's own heading.
+    expect(screen.getByRole('link', { name: /projects/i })).toHaveAttribute(
       'href',
       '/projects',
     );

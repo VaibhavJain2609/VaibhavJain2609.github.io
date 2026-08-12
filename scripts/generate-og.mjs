@@ -169,12 +169,16 @@ function card() {
             letterSpacing: '0.02em',
             color: GRAPHITE,
             display: 'flex',
+            // Stacked, not inline. Side by side these two overlapped and ran
+            // off the 1200px canvas as soon as the employer name grew past a
+            // word or two — Satori does not wrap a flex row here.
+            flexDirection: 'column',
+            gap: 10,
+            maxWidth: 1040,
           },
         },
         h('span', { style: { color: ULTRAMARINE } }, profile.employer),
-        // Satori collapses a leading space in a flex child, so the gap before
-        // the em dash is set as spacing rather than as whitespace.
-        h('span', { style: { marginLeft: '0.5em' } }, `— ${profile.focus}`),
+        h('span', {}, profile.focus),
       ),
     ),
     h(

@@ -3,20 +3,29 @@ export interface Degree {
   degree: string;
   link: string;
   year: number;
+  /** Set on a degree still in progress, so the year reads as a target. */
+  expected?: boolean;
 }
 
 const degrees: Degree[] = [
   {
-    school: 'Stanford University',
-    degree: 'M.S. Computational and Mathematical Engineering (ICME)',
-    link: 'https://stanford.edu',
-    year: 2016,
+    school: 'National Forensic Sciences University',
+    degree: 'M.Sc. Digital Forensics and Information Security',
+    link: 'https://www.nfsu.ac.in/',
+    year: 2027,
+    expected: true,
   },
   {
-    school: 'University at Buffalo',
-    degree: 'B.S. Electrical Engineering, Computer Engineering',
-    link: 'https://buffalo.edu',
-    year: 2012,
+    school: 'California State University, Sacramento',
+    degree: 'B.S. Computer Science',
+    link: 'https://www.csus.edu/',
+    year: 2024,
+  },
+  {
+    school: 'Foothill College',
+    degree: 'A.D.T. Computer Science',
+    link: 'https://foothill.edu/',
+    year: 2021,
   },
 ];
 

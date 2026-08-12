@@ -10,72 +10,108 @@ export interface Category {
 }
 
 const skills: Skill[] = [
+  // Offensive security
+  {
+    title: 'Web Application Pentesting',
+    competency: 4,
+    category: ['Security'],
+  },
+  {
+    title: 'Burp Suite',
+    competency: 4,
+    category: ['Security'],
+  },
+  {
+    title: 'OWASP ZAP',
+    competency: 4,
+    category: ['Security'],
+  },
+  {
+    title: 'Nessus',
+    competency: 4,
+    category: ['Security'],
+  },
+  {
+    title: 'Nmap',
+    competency: 4,
+    category: ['Networking', 'Security'],
+  },
+  {
+    title: 'Threat & Vulnerability Assessment',
+    competency: 4,
+    category: ['Security'],
+  },
+  // Digital forensics and incident response
+  {
+    title: 'Memory Forensics',
+    competency: 3,
+    category: ['Forensics'],
+  },
+  {
+    title: 'Volatility 3',
+    competency: 3,
+    category: ['Forensics'],
+  },
+  {
+    title: 'Static Malware Analysis',
+    competency: 3,
+    category: ['Forensics'],
+  },
+  {
+    title: 'Autopsy',
+    competency: 3,
+    category: ['Forensics'],
+  },
+  {
+    title: 'Wireshark',
+    competency: 4,
+    category: ['Forensics', 'Networking'],
+  },
   // Languages
   {
     title: 'Python',
     competency: 5,
-    category: ['Languages', 'ML Engineering'],
+    category: ['Languages'],
+  },
+  {
+    title: 'Java',
+    competency: 4,
+    category: ['Languages'],
   },
   {
     title: 'TypeScript',
-    competency: 5,
+    competency: 4,
     category: ['Languages', 'Web Development'],
   },
   {
     title: 'SQL',
     competency: 4,
-    category: ['Languages', 'Databases'],
-  },
-  // AI & LLM
-  {
-    title: 'AI Agents',
-    competency: 5,
-    category: ['ML Engineering'],
+    category: ['Databases', 'Languages'],
   },
   {
-    title: 'LLM Evaluation',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'AI Red-teaming',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM APIs',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'RAG',
+    title: 'Bash',
     competency: 4,
-    category: ['ML Engineering'],
+    category: ['Infrastructure', 'Languages'],
   },
   {
-    title: 'Prompt Engineering',
+    title: 'PowerShell',
+    competency: 3,
+    category: ['Infrastructure', 'Languages'],
+  },
+  {
+    title: 'C/C++',
+    competency: 3,
+    category: ['Languages'],
+  },
+  // Web development
+  {
+    title: 'Next.js',
     competency: 4,
-    category: ['ML Engineering'],
+    category: ['Web Development'],
   },
   {
-    title: 'Vector Databases',
+    title: 'React',
     competency: 4,
-    category: ['ML Engineering', 'Databases'],
-  },
-  {
-    title: 'PyTorch',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Pandas',
-    competency: 5,
-    category: ['ML Engineering', 'Data Engineering'],
-  },
-  // Web Development
-  {
-    title: 'Node.js',
-    competency: 5,
     category: ['Web Development'],
   },
   {
@@ -84,9 +120,35 @@ const skills: Skill[] = [
     category: ['Web Development'],
   },
   {
-    title: 'Next.js',
+    title: 'Spring Boot',
     competency: 3,
     category: ['Web Development'],
+  },
+  {
+    title: 'Angular',
+    competency: 3,
+    category: ['Web Development'],
+  },
+  // Identity and access
+  {
+    title: 'Active Directory',
+    competency: 4,
+    category: ['Identity', 'Infrastructure'],
+  },
+  {
+    title: 'Entra ID',
+    competency: 3,
+    category: ['Identity', 'Infrastructure'],
+  },
+  {
+    title: 'Keycloak',
+    competency: 3,
+    category: ['Identity', 'Web Development'],
+  },
+  {
+    title: 'Auth0',
+    competency: 3,
+    category: ['Identity', 'Web Development'],
   },
   // Databases
   {
@@ -101,24 +163,29 @@ const skills: Skill[] = [
   },
   // Infrastructure
   {
-    title: 'AWS',
+    title: 'Linux',
     competency: 4,
     category: ['Infrastructure'],
   },
   {
     title: 'Docker',
-    competency: 4,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Kubernetes',
     competency: 3,
     category: ['Infrastructure'],
   },
   {
-    title: 'Observability',
+    title: 'Azure',
+    competency: 3,
+    category: ['Infrastructure'],
+  },
+  {
+    title: 'Sophos XGS Firewall',
+    competency: 3,
+    category: ['Infrastructure', 'Networking'],
+  },
+  {
+    title: 'Git',
     competency: 4,
-    category: ['Infrastructure', 'ML Engineering'],
+    category: ['Infrastructure'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 

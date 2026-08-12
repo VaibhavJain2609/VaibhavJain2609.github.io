@@ -1,89 +1,95 @@
 export interface Course {
   title: string;
-  number: string;
+  /**
+   * Catalog code, where the institution publishes one. NFSU does not publish
+   * per-paper codes for this programme, so those rows carry a title only and
+   * `Course.tsx` renders them without the number prefix.
+   */
+  number?: string;
   link: string;
   university: string;
 }
 
+const NFSU_PROGRAMME =
+  'https://www.nfsu.ac.in/Programs/programinfo/23?deptid=53';
+const CSUS_CATALOG = 'https://catalog.csus.edu/';
+const FOOTHILL_CATALOG = 'https://foothill.edu/schedule/';
+
 const courses: Course[] = [
   {
-    title: 'Convex Optimization',
-    number: 'EE 364a',
-    link: 'http://stanford.edu/class/ee364a/',
-    university: 'Stanford',
+    title: 'Web Application Security',
+    link: NFSU_PROGRAMME,
+    university: 'NFSU',
   },
   {
-    title: 'Machine Learning',
-    number: 'CS 229',
-    link: 'http://cs229.stanford.edu/',
-    university: 'Stanford',
+    title: 'Malware Analysis and Forensics',
+    link: NFSU_PROGRAMME,
+    university: 'NFSU',
   },
   {
-    title: 'Convolutional Neural Networks for Visual Recognition',
-    number: 'CS 231n',
-    link: 'http://cs231n.stanford.edu/',
-    university: 'Stanford',
+    title: 'Network Security Forensics',
+    link: NFSU_PROGRAMME,
+    university: 'NFSU',
   },
   {
-    title: 'Numerical Linear Algebra',
-    number: 'CME 302',
-    link: 'http://scpd.stanford.edu/search/publicCourseSearchDetails.do;jsessionid=561188A06434D7D97953C4706DE12831?method=load&courseId=11685',
-    university: 'Stanford',
+    title: 'Computer Networking Fundamentals',
+    number: 'CSC 138',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Numerical Optimization',
-    number: 'CME 304',
-    link: 'http://web.stanford.edu/class/cme304/',
-    university: 'Stanford',
+    title: 'Operating Systems Principles',
+    number: 'CSC 139',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Discrete Mathematics and Algorithms',
-    number: 'CME 305',
-    link: 'http://stanford.edu/~rezab/discrete/',
-    university: 'Stanford',
+    title: 'Database Management Systems',
+    number: 'CSC 134',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Stochastic Methods in Engineering',
-    number: 'CME 306',
-    link: 'http://web.stanford.edu/class/cme306/',
-    university: 'Stanford',
+    title: 'Computer Software Engineering',
+    number: 'CSC 131',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Optimization',
-    number: 'CME 307',
-    link: 'http://stanford.edu/class/cme307/',
-    university: 'Stanford',
+    title: 'Introduction to Systems Programming in UNIX',
+    number: 'CSC 60',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Stochastic Processes',
-    number: 'CME 308',
-    link: 'http://web.stanford.edu/class/cme308/',
-    university: 'Stanford',
+    title: 'Computer Organization',
+    number: 'CSC 137',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Randomized Algorithms and Probabilistic Analysis',
-    number: 'CS 365',
-    link: 'http://web.stanford.edu/class/cs365/',
-    university: 'Stanford',
+    title: 'Data Mining',
+    number: 'CSC 177',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Deep Learning for Natural Language Processing',
-    number: 'CS 224d',
-    link: 'http://cs224d.stanford.edu',
-    university: 'Stanford',
+    title: 'Intelligent Systems',
+    number: 'CSC 180',
+    link: CSUS_CATALOG,
+    university: 'Sacramento State',
   },
   {
-    title: 'Mining Massive Data Sets',
-    number: 'CS 246',
-    link: 'http://web.stanford.edu/class/cs246/',
-    university: 'Stanford',
+    title: 'Advanced Data Structures and Algorithms in Java',
+    number: 'CS 1C',
+    link: FOOTHILL_CATALOG,
+    university: 'Foothill College',
   },
   {
-    title: 'Computer Vision: Foundations and Applications',
-    number: 'CS 131',
-    link: 'http://vision.stanford.edu/teaching/cs131_fall1415/index.html',
-    university: 'Stanford',
+    title: 'Discrete Mathematics',
+    number: 'MATH 22',
+    link: FOOTHILL_CATALOG,
+    university: 'Foothill College',
   },
 ];
-
 export default courses;

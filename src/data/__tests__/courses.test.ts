@@ -11,19 +11,22 @@ describe('courses data', () => {
   it('each course has required properties', () => {
     for (const course of courses) {
       expect(course).toHaveProperty('title');
-      expect(course).toHaveProperty('number');
       expect(course).toHaveProperty('link');
       expect(course).toHaveProperty('university');
 
       expect(typeof course.title).toBe('string');
-      expect(typeof course.number).toBe('string');
       expect(typeof course.link).toBe('string');
       expect(typeof course.university).toBe('string');
     }
   });
 
-  it('course numbers are non-empty', () => {
+  // `number` is optional: not every institution publishes a per-course code.
+  // Where one is given it still has to be a usable string.
+  it('course numbers, where present, are non-empty strings', () => {
     for (const course of courses) {
+      if (course.number === undefined) continue;
+
+      expect(typeof course.number).toBe('string');
       expect(course.number.trim().length).toBeGreaterThan(0);
     }
   });
@@ -49,8 +52,10 @@ describe('courses data', () => {
     expect(uniqueTitles.size).toBe(titles.length);
   });
 
-  it('has unique course numbers', () => {
-    const numbers = courses.map((c) => c.number);
+  it('has unique course numbers among courses that declare one', () => {
+    const numbers = courses
+      .map((c) => c.number)
+      .filter((n): n is string => n !== undefined);
     const uniqueNumbers = new Set(numbers);
 
     expect(uniqueNumbers.size).toBe(numbers.length);

@@ -70,6 +70,8 @@ describe('routes', () => {
       .filter((route) => route.primary === false)
       .map((route) => route.path);
 
-    expect(secondaryPaths).toEqual(['/stats', '/projects']);
+    // `/projects` was promoted to primary navigation: the project write-ups
+    // are what a reader comes here to evaluate.
+    expect(secondaryPaths).toEqual(['/stats']);
   });
 });

@@ -11,12 +11,13 @@ import {
 import type { StatData } from '../../components/Stats/types';
 
 /**
- * The stats page reports age at deliberately absurd precision.
+ * The stats page reports time since the first line of code at deliberately
+ * absurd precision.
  *
  * The placeholder is the rendered content; `useLiveAge` writes the reading into
  * this node directly, so the ticking never re-renders React.
  */
-function Age() {
+function YearsCoding() {
   const ref = useLiveAge<HTMLSpanElement>(AGE_PRECISION_FULL);
 
   return (
@@ -28,9 +29,9 @@ function Age() {
 
 const data: StatData[] = [
   {
-    key: 'age',
-    label: 'Current age',
-    value: <Age />,
+    key: 'years-coding',
+    label: 'Years writing code',
+    value: <YearsCoding />,
   },
   {
     key: 'countries',

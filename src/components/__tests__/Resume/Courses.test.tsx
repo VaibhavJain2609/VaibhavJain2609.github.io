@@ -60,16 +60,19 @@ describe('Courses', () => {
     expect(items.length).toBe(mockCourses.length);
   });
 
-  it('sorts courses by university then number', () => {
-    const unsortedCourses = [mockCourses[2], mockCourses[1], mockCourses[0]];
+  // Display order is data order. Sorting on `number` is no longer possible
+  // now that it is optional: graduate papers with no published catalog code
+  // would have thrown in the comparator.
+  it('renders courses in the order supplied', () => {
+    const reordered = [mockCourses[2], mockCourses[1], mockCourses[0]];
 
-    render(<Courses data={unsortedCourses} />);
+    render(<Courses data={reordered} />);
 
     const items = screen.getAllByRole('listitem');
     expect(items.map((item) => item.textContent)).toEqual([
-      'CS 229:Machine Learning',
-      'CS 230:Deep Learning',
       'CS 161:Algorithms',
+      'CS 230:Deep Learning',
+      'CS 229:Machine Learning',
     ]);
   });
 

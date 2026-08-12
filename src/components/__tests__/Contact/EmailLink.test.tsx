@@ -88,11 +88,15 @@ describe('EmailLink', () => {
       // The blank frame itself.
       expect(shown).not.toBe('');
 
-      // The flash is a *jump* to the complete address from some other alias
-      // already several characters long. Looping re-types the address
-      // legitimately, but that grows "h" -> "hi", so the previous frame is a
-      // single character and this guard leaves it alone.
-      if (previous.length > 1 && previous !== localPart) {
+      // The flash is a *jump* to the complete address from some other alias.
+      // Looping re-types the address legitimately, one character at a time, so
+      // recognise that structurally: the frame grew by exactly one character
+      // and extends the previous one. The old `previous.length > 1` test only
+      // separated the two cases while the local part was two characters long.
+      const grewByOneCharacter =
+        shown.length === previous.length + 1 && shown.startsWith(previous);
+
+      if (previous !== localPart && !grewByOneCharacter) {
         expect(shown).not.toBe(localPart);
       }
 

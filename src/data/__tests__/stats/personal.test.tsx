@@ -1,6 +1,7 @@
 import { act, render } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import profile from '../../profile.json';
 import data from '../../stats/personal';
 
 describe('personal stats data', () => {
@@ -25,13 +26,13 @@ describe('personal stats data', () => {
     }
   });
 
-  it('has an age stat with a React component', () => {
-    const ageStat = data.find((s) => s.key === 'age');
+  it('has a years-coding stat with a React component', () => {
+    const codingStat = data.find((s) => s.key === 'years-coding');
 
-    expect(ageStat).toBeDefined();
-    expect(ageStat!.label).toBe('Current age');
-    // Age value is a React element
-    expect(ageStat!.value).toBeDefined();
+    expect(codingStat).toBeDefined();
+    expect(codingStat!.label).toBe('Years writing code');
+    // The value is a React element, not a string: it ticks live.
+    expect(codingStat!.value).toBeDefined();
   });
 
   it('has a countries visited stat', () => {
@@ -39,7 +40,9 @@ describe('personal stats data', () => {
 
     expect(countriesStat).toBeDefined();
     expect(countriesStat!.label).toBe('Countries visited');
-    expect(countriesStat!.value).toBe(53);
+    // Asserted against the profile rather than a literal, so this pins the
+    // wiring instead of one person's biography.
+    expect(countriesStat!.value).toBe(profile.countriesVisited);
     expect(countriesStat!.link).toContain('google.com/maps');
   });
 
@@ -48,12 +51,12 @@ describe('personal stats data', () => {
 
     expect(locationStat).toBeDefined();
     expect(locationStat!.label).toBe('Current city');
-    expect(locationStat!.value).toBe('New York, NY');
+    expect(locationStat!.value).toBe(profile.currentCity);
   });
 
-  it('Age component renders and updates', () => {
-    const ageStat = data.find((s) => s.key === 'age');
-    const AgeComponent = () => <>{ageStat!.value}</>;
+  it('live readout renders and updates', () => {
+    const codingStat = data.find((s) => s.key === 'years-coding');
+    const AgeComponent = () => <>{codingStat!.value}</>;
 
     render(<AgeComponent />);
 

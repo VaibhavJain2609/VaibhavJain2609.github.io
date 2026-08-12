@@ -4,13 +4,13 @@
     "height": 630
   },
   "profile": {
-    "name": "Michael D'Angelo",
-    "employer": "OpenAI",
-    "focus": "Promptfoo and Codex Security",
-    "countriesVisited": 53,
-    "computingSince": 1993,
-    "currentCity": "New York, NY"
+    "name": "Vaibhav Jain",
+    "employer": "National Forensic Sciences University",
+    "focus": "Digital forensics and application security",
+    "countriesVisited": 11,
+    "computingSince": 2005,
+    "currentCity": "Jaipur, India"
   },
-  "generatorDigest": "69f9406c836e1571b913cecb43e10ae4517ea8749e55735d6e3bc700fb85f241",
-  "imageDigest": "916adc2a96bbdc30d68db9b291927d346cad40e9a12ae7384f8332cd7ed882a2"
+  "generatorDigest": "0ae79e76918d6b892d84c19f049e3b787c43cdc8f214ce236820ff35c7b6b2fe",
+  "imageDigest": "b13047c874f8627ee0bd67aee8835449b027dc04a718355be752eb14898fd038"
 }

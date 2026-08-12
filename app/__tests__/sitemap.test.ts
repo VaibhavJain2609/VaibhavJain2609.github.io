@@ -13,32 +13,21 @@ describe('sitemap', () => {
         expect.objectContaining({ url: `${SITE_URL}/about/` }),
         expect.objectContaining({ url: `${SITE_URL}/resume/` }),
         expect.objectContaining({ url: `${SITE_URL}/projects/` }),
-        expect.objectContaining({ url: `${SITE_URL}/writing/` }),
         expect.objectContaining({ url: `${SITE_URL}/stats/` }),
         expect.objectContaining({ url: `${SITE_URL}/contact/` }),
       ]),
     );
   });
 
-  it('does not invent modification dates for static pages', () => {
-    const staticEntries = sitemap().filter(
-      (entry) => !entry.url.startsWith(`${SITE_URL}/writing/`),
-    );
-
-    expect(
-      staticEntries.every((entry) => entry.lastModified === undefined),
-    ).toBe(true);
+  it('lists every route with a trailing slash', () => {
+    expect(sitemap().every((entry) => entry.url.endsWith('/'))).toBe(true);
   });
 
-  it('uses trailing slashes for post routes', () => {
-    const entries = sitemap();
-    const postEntries = entries.filter(
-      (entry) =>
-        entry.url.startsWith(`${SITE_URL}/writing/`) &&
-        entry.url !== `${SITE_URL}/writing/`,
+  it('does not invent modification dates', () => {
+    // Every exported page is static. A `lastModified` here would be a
+    // fabricated freshness signal rather than a measured one.
+    expect(sitemap().every((entry) => entry.lastModified === undefined)).toBe(
+      true,
     );
-
-    expect(postEntries.length).toBeGreaterThan(0);
-    expect(postEntries.every((entry) => entry.url.endsWith('/'))).toBe(true);
   });
 });

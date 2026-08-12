@@ -9,13 +9,17 @@ import profile from '@/data/profile.json';
  */
 
 /**
- * Birth instant, with an explicit offset.
+ * The instant the live counter measures from, with an explicit offset.
  *
  * Without one this parsed as local time, so the readout shifted by hours
  * depending on where the visitor was — the whole point of the figure is that
- * it is the same measurement for everyone. -05:00 is Buffalo, NY in February.
+ * it is the same measurement for everyone. +05:30 is IST.
+ *
+ * This is the first line of code written, not a birth date. A public page has
+ * no business ticking someone's age at eleven decimal places, and years spent
+ * writing code is the figure a reader of this site actually came for.
  */
-export const BIRTH_DATE = profile.birthDate;
+export const CODING_SINCE = profile.codingSince;
 
 /** Milliseconds in an average year, accounting for leap years. */
 export const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365.2421897;
@@ -64,8 +68,8 @@ export function ageIntervalFor(precision: number): number {
  * and testable.
  */
 export function ageAt(now: number, precision: number): string {
-  const birthTime = new Date(BIRTH_DATE).getTime();
-  return ((now - birthTime) / MS_PER_YEAR).toFixed(precision);
+  const epoch = new Date(CODING_SINCE).getTime();
+  return ((now - epoch) / MS_PER_YEAR).toFixed(precision);
 }
 
 /**

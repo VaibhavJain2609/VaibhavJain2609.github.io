@@ -41,6 +41,17 @@ describe('Cell', () => {
     expect(image).toHaveAttribute('src', expect.stringContaining('test.jpg'));
   });
 
+  // The homepage builds `/projects/#<slug>` from the same helper, so the card
+  // has to carry the matching id or the deep link lands nowhere.
+  it('anchors the card on a slug of its title', () => {
+    render(<Cell data={mockProject} />);
+
+    expect(document.querySelector('.project-card')).toHaveAttribute(
+      'id',
+      'test-project',
+    );
+  });
+
   it('does not imply that a static archive card is clickable', () => {
     render(<Cell data={{ ...mockProject, link: undefined }} />);
 
