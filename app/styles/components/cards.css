@@ -408,8 +408,9 @@
   background: var(--color-border-alt);
 }
 
-/* Lead — hierarchy through breathing room and a measured size step, rather
-   than making the first company twice as loud as the rest of the history. */
+/* Lead — hierarchy through breathing room alone. Company names stay one
+   uniform size across every tier, so the spine reads as a single history
+   rather than ranking roles against each other by job title. */
 .jobs-container--lead {
   padding-top: 1.5rem;
   padding-bottom: 4.5rem;
@@ -417,12 +418,6 @@
 
 .jobs-container--lead .job-marker {
   top: calc(1.5rem + 0.6rem);
-}
-
-.jobs-container--lead header h3 {
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-black);
-  letter-spacing: var(--tracking-display);
 }
 
 .jobs-container--lead .summary {
@@ -437,7 +432,6 @@
 }
 
 .jobs-container--early header h3 {
-  font-size: var(--text-md);
   margin-bottom: 0.5rem;
 }
 

@@ -160,10 +160,6 @@
     display: inline;
   }
 
-  .jobs-container--lead header h3 {
-    font-size: 14pt;
-  }
-
   .jobs-container header h3 {
     font-size: 12pt;
     margin-bottom: 0.35rem;
