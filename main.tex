@@ -1,0 +1,239 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+\usepackage{fancyhdr}
+\RequirePackage{fontawesome}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Vaibhav Jain} \\ \vspace{1pt}
+    \small Jaipur, India $|$
+    \href{tel:+918527671247}{\underline{+91 8527671247}} $|$
+    \href{mailto:vaibhavjain@protonmail.com}{\underline{vaibhavjain@protonmail.com}} \\ \vspace{1pt}
+    \small \href{https://linkedin.com/in/jain-vaibhav}{\underline{linkedin.com/in/jain-vaibhav}} $|$
+    \href{https://github.com/vaibhavjain2609}{\underline{github.com/vaibhavjain2609}} $|$
+    \href{https://jainvaibhav.me/}{\underline{jainvaibhav.me}} \\
+      % \normalsize \textit{ Current computer science student experienced writing and developing API’s in Java and Python. Displayed excellence in software engineering by gaining practical experience through internships and personal projects }
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+  \resumeSubheading{National Forensic Sciences University}{Jaipur, India}{M.Sc. Digital Forensics and Information Security}
+  {Graduation: June 2027}
+   \resumeItemListStart
+        \resumeItem{\textbf{Coursework:} Web Application Security, Malware Analysis and Forensics, and Network Security Forensics}
+    \resumeItemListEnd
+    \resumeSubheading
+      {California State University}{Sacramento, CA}
+      {Bachelor of Science in Computer Science}{Graduation: May 2024}
+      % \resumeItemListStart        \resumeItem{\textbf{Coursework:} Data Structures and Algorithms, Data Mining, Operating Systems, Network Fundamentals, Database Management Systems, Web Development, Artificial Intelligence, and Computer Architecture}
+      %   \resumeItem{\textbf{Honors:} Deans's List for 3 semesters}
+      %--- I wish to add the Coursework over here
+ %   \resumeSubheading
+  %    {Woodstock School}{Mussoorie, India}
+   %  {High School Diploma}{Aug 2010 -- May 2019}
+     % \resumeItemListStart
+        % \resumeItem{\textbf{Honors:} Student Council: Head of Media}
+    % \resumeItemListEnd
+  \resumeSubHeadingListEnd
+%-----------Course Work -----------
+% \section{Coursework}
+% \resumeSubHeadingListStart
+
+% \resumeSubHeadingListEnd
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+        \resumeSubheading{DevOps and Network Security Intern}{Jun 2026 -- Jul 2026}{Ekvayu Tech Private Limited}{Noida, India}
+            \resumeItemListStart
+            \resumeItem{Built a 7-stage GitLab CI/CD pipeline where 5 security scanners gate the deploy rather than follow it: Gitleaks (secrets), Bandit and Semgrep (SAST), Checkov (Dockerfile and Compose IaC), and Trivy (filesystem and image).}
+            \resumeItem{Enforced identical gates across all 3 environments, and fronted the pipeline with Ruff, mypy, and hadolint so lint or type failures halt the run pre-build; extended it post-deploy with OWASP ZAP DAST and smoke tests.}
+            \resumeItem{Instrumented 100+ containers across 3 locations with Prometheus and Grafana, and hardened OPNsense firewalls with VLAN segmentation to limit lateral movement.}
+            \resumeItem{Uncovered 3 critical defects in the product's malware detonation sandbox, where a reused container-name sequence left metrics and logs unattributable to the sample that produced them.}
+            \resumeItem{Invited back after a prior security internship to own delivery for the same product previously tested from the offensive side.}
+            \resumeItemListEnd
+        \resumeSubheading{IT Contractor}{Dec 2025 -- Jan 2026}{Praveen Aggarwal Chartered Accountants}{New Delhi, India}
+            \resumeItemListStart
+            % \resumeItem{Centralized identity for 80 employees by implementing Active Directory and Microsoft Entra ID.}
+            \resumeItem{Architected an 80-user Active Directory environment from scratch and deployed a hybrid Active Directory + Entra ID integrated SSL VPN on a Sophos XGS firewall with MFA and conditional access policies.}
+            \resumeItem{Minimized data loss risk in disaster scenarios by implementing automated backup policies to Azure Blob Storage, meeting 24-hour RTO and 4-hour RPO targets.}
+            \resumeItem{Reduced email infrastructure costs by 60\% by migrating 20 mailboxes from Google Workspace to Microsoft 365.}
+            \resumeItemListEnd
+        \resumeSubheading{Cybersecurity Analyst Intern}{Jun 2025 -- Aug 2025}{Ekvayu Tech Private Limited}{Noida, India}
+        \resumeItemListStart
+            % \resumeItem{Discovered and remediated 15+ critical privilege escalation vulnerabilities by performing VAPT using Burp Suite and OWASP ZAP on an internally developed security tool.}
+            \resumeItem{Discovered and reduced attack surface for an internally developed security tool by remediating 15+ critical vulnerabilities via VAPT using Burp Suite and OWASP ZAP.}
+            \resumeItem{Secured code repository infrastructure by migrating a GitLab server while implementing configuration hardening, access controls, and least-privilege policies.}
+            \resumeItem{Resolved 10 vulnerabilities across production servers and internal apps via Nessus-based threat assessments.}
+        \resumeItemListEnd
+    % \resumeSubheading
+    %   {Software Engineering Intern}{Jun 2022 -- Aug 2022}
+    %   {HoonarTek}{New Delhi, India}
+    %   \resumeItemListStart
+    %     \resumeItem{Raised an internal tool to OWASP ASVS Level 2 by developing an authentication API with Java Spring Boot and Keycloak.}
+    %     % \resumeItem{Delivered internal knowledge-sharing sessions on Log4J and debugging to a team of 8 engineers, successfully integrating logging into team's coding standard.}
+    %   \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Technical Projects}
+     \resumeSubHeadingListStart
+             \resumeProjectHeading {\textbf{\href{https://github.com/VaibhavJain2609/MedConnect/}{MedConnect \faExternalLink}} $|$ \emph{Next.js, FastAPI, PostgreSQL, TypeScript, Docker, Keycloak, Redis}}{Feb 2026 -- Apr 2026}
+            \resumeItemListStart
+                \resumeItem{Designed a multi-tenant clinic architecture with tenant-scoped data access, and enforced ABDM-compliant cross-clinic data sharing through a patient consent system with link codes, approval workflows, and revocation support.}
+                \resumeItem{Resolved 12+ production issues including N+1 queries, race conditions, and security misconfigurations to improve API reliability and security.}
+                \resumeItemListEnd
+     % \resumeProjectHeading {\textbf{\href{https://github.com/VaibhavJain2609/btrfsparser}{btrfsparser \faExternalLink}} $|$ \emph{Python, Filesystem Forensics, Reverse Engineering}}{Feb 2026}
+     %       \resumeItemListStart
+     %           \resumeItem{Recovered deleted files and metadata from raw BTRFS disk images by parsing the superblock, walking the chunk tree to map logical to physical addresses, and traversing B-trees for inodes and directory entries.}
+     %           \resumeItem{Reassembled files across 3 extent types (inline, compressed, and regular) while validating CRC32C checksums to guarantee forensic integrity.}
+     %           \resumeItemListEnd
+     \resumeProjectHeading {\textbf{{KK Society}} $|$ \emph{Next.js, Spring Boot, PostgreSQL, TypeScript, Docker, Auth0}}{May 2025 -- Dec 2025}
+            \resumeItemListStart
+                \resumeItem{Audited and enforced Role-Based Access Control and rate limiting across 90+ API endpoints to mitigate broken access control and improve resilience against DoS attacks.}
+                \resumeItem{Integrated the RazorPay payment gateway and a state-tracked service request workflow, streamlining collections and request visibility for 970 society members.}
+                \resumeItemListEnd
+
+            \resumeProjectHeading {\textbf{{Incident Response and Malware Analysis}} $|$ \emph{Volatility 3, Wireshark, Kali Linux, Python}}{Nov 2025}
+            \resumeItemListStart
+                \resumeItem{Identified indicators of compromise (IOCs) including hardcoded C2 URLs and malicious hashes through static malware analysis using strings, exiftool, and Detect It Easy.}
+                \resumeItem{Conducted memory forensics using Volatility 3 to identify malicious processes and extract network artifacts.}
+                % \resumeItem{Designed Python scripts to automate hash extraction and VirusTotal lookups, accelerating IOC validation.}
+                % \resumeItem{Analyzed network traffic captures in Wireshark to detect anomalous DNS queries and suspicious connections.}
+
+                \resumeItemListEnd
+            % \resumeProjectHeading {\textbf{{Security Audit and Risk Assessment}} $|$ \emph{Splunk, OWASP, Nessus}}{Nov 2025}
+            % \resumeItemListStart
+            %     \resumeItem{Analyzed authentication logs to identify brute-force attempts, VPN anomalies, and unauthorized access patterns.}
+            %     \resumeItem{Reviewed firewall configurations and cloud storage policies, identifying misconfigurations and compliance gaps against ISO 27001 and GDPR.}
+            %     \resumeItem{Developed risk register with threat modeling, likelihood/impact ratings, and mitigation recommendations.}
+    \resumeSubHeadingListEnd
+
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, C/C++, SQL, Bash, PowerShell, TypeScript} \\
+     \textbf{DevSecOps}{: GitLab CI, GitHub Actions, Docker, Semgrep, Bandit, Trivy, Checkov, Gitleaks, SAST/DAST, Prometheus, Grafana, Azure} \\
+     \textbf{Security Tools}{: Burp Suite, OWASP ZAP, Nessus, Nmap, Wireshark, Volatility 3, Autopsy, OWASP Top 10, OWASP ASVS} \\
+     \textbf{Infrastructure \& Identity}{: Active Directory, Entra ID (Azure AD), Keycloak, Auth0, RBAC, Sophos XGS, OPNsense, VLAN Segmentation, Linux} \\
+     \textbf{Frameworks \& Tools}{: Next.js, React, FastAPI, Spring Boot, Angular, PostgreSQL, Redis, Git} \\
+     % \textbf{Soft Skills: }{Critical Thinking, Leadership, Organizational, Initiative, Teamwork, Bilingual (Hindi + English)}
+     \textbf{Certifications}{: Microsoft SC-900 Security, Compliance and Identity Fundamentals (In Progress, target Nov 2026)}
+    }}
+ \end{itemize}
+%-------------------------------------------
+\end{document}
