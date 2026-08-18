@@ -11,8 +11,17 @@ import profile from '@/data/profile.json';
  * JSON-LD, and every page's `alternates.canonical` derive from it. To move the
  * site to a custom domain, change this value and add a matching `public/CNAME`
  * — nothing else needs to change.
+ *
+ * This must be the origin the site is actually *served* from, not the one it
+ * is deployed to. `public/CNAME` pointed GitHub Pages at the custom domain
+ * while this constant still said `vaibhavjain2609.github.io`, so every
+ * canonical, `og:url`, JSON-LD `@id`, and sitemap entry named an origin that
+ * 301s to somewhere else — crawlers see a self-referencing canonical pointing
+ * off-site, and scrapers fetch the share image through a redirect. Keep this,
+ * `public/CNAME`, and `homepage` in `package.json` (which `verify-export`
+ * reads as the expected origin) in agreement.
  */
-export const SITE_URL = 'https://vaibhavjain2609.github.io';
+export const SITE_URL = 'https://jainvaibhav.me';
 export const AUTHOR_NAME = profile.name;
 /**
  * The portrait. Used for JSON-LD `image`, where the value should be a picture
