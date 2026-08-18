@@ -12,17 +12,18 @@ export interface Position {
 }
 
 const work: Position[] = [
-  // TODO(vaibhav): add metrics. This is the only entry with no numbers in it,
-  // on a resume where every other role quantifies its outcomes — how many
-  // environments the pipelines covered, how many VLANs, how many firewall
-  // policies. The figures are noted elsewhere and were not to hand when this
-  // was written.
-  //
   // The awarded title was the generic "Intern", so the descriptor is a choice.
   // This one is picked for how it screens: "DevOps" and "Network Security" are
   // both terms recruiters actually filter on, and both are honestly claimed by
-  // the bullets below. The alternative considered, "System Architecture
-  // Intern", is near-unsearchable and reads as overclaim from an intern.
+  // the bullets below. "DevSecOps Intern" was the other candidate and is just
+  // as true of the pipeline — but "DevSecOps" does not contain "DevOps" as a
+  // substring, so a literal keyword filter for the more common term would miss
+  // it. The title keeps "DevOps"; the summary carries "DevSecOps", which is
+  // indexed too.
+  //
+  // Named tools are the point of this entry. "Built deployment pipelines" is
+  // what every DevOps resume says; the gate list is what distinguishes a
+  // pipeline that enforces security from one that reports on it afterwards.
   {
     name: 'Ekvayu Tech Private Limited',
     position: 'DevOps and Network Security Intern',
@@ -30,10 +31,16 @@ const work: Position[] = [
     startDate: '2026-06-12',
     endDate: '2026-07-31',
     summary: `A second stint at <a href='https://ekvayu.com'>Ekvayu Tech</a>, on the build and
-    network side rather than the offensive one. I owned deployment pipelines across environments
-    and the firewall and segmentation work underneath them.`,
+    network side rather than the offensive one. I owned the delivery pipeline — a seven-stage
+    GitLab CI pipeline built as DevSecOps, where scanning gates the deploy instead of following
+    it — along with monitoring for the container fleet and the firewall and segmentation work
+    underneath it.`,
     highlights: [
-      'Built and maintained build and deployment pipelines across multiple environments, standardising promotion from development through to production.',
+      'Built a seven-stage GitLab CI pipeline in which security scanning gates the deploy rather than following it: Gitleaks for committed secrets, Bandit and Semgrep for SAST, Checkov against Dockerfiles and Compose definitions, and Trivy across both the filesystem and the built image.',
+      'Fronted the pipeline with Ruff, mypy, and hadolint so a lint or type failure stops the run before anything is built, and extended it past the deploy with OWASP ZAP and smoke tests against the running service.',
+      'Standardised promotion from development through to production across three locations, applying the same gates to every environment rather than to production alone.',
+      'Stood up Prometheus and Grafana monitoring across 100+ containers running at three locations.',
+      "Found three critical defects in the product's detonation sandbox, which runs each submitted file or URL in its own container: container names were drawn from a reused numeric sequence, so one name identified different samples over time and neither metrics nor logs could be attributed to the analysis that produced them.",
       'Configured and hardened OPNsense firewalls, covering rule design and security policy configuration.',
       'Designed and implemented VLAN segmentation to isolate network segments and limit lateral movement.',
     ],
