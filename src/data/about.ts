@@ -2,7 +2,7 @@ export const aboutMarkdown = `# Intro
 
 I am Vaibhav Jain, a security engineer who builds the delivery pipeline and secures it — DevSecOps and platform work on one side, application security and digital forensics on the other. I am currently reading for an M.Sc. in Digital Forensics and Information Security at the [National Forensic Sciences University](https://www.nfsu.ac.in/), with coursework in web application security, malware analysis, and network security forensics.
 
-Most recently I was back at [Ekvayu Tech](https://ekvayu.com), a deep-tech security company in Noida, on the build side: deployment pipelines across environments, OPNsense firewall hardening, and VLAN segmentation to limit lateral movement. My first stint there was the offensive one — VAPT against the company's own security tooling, with more than fifteen critical findings remediated. Before either, I built systems rather than broke them: a member portal for a 970-member housing society, an authentication layer on Spring Boot and Keycloak, and internal tooling on the Microsoft Power Platform.
+Most recently I was back at [Ekvayu Tech](https://ekvayu.com), a deep-tech security company in Noida, on the build side: a seven-stage GitLab CI pipeline where secret, SAST, container, and image scanning gate the deploy rather than following it, Prometheus and Grafana over a hundred-odd containers across three sites, and the OPNsense firewalls and VLAN segmentation underneath. My first stint there was the offensive one — VAPT against the company's own security tooling, with more than fifteen critical findings remediated. Before either, I built systems rather than broke them: a member portal for a 970-member housing society, an authentication layer on Spring Boot and Keycloak, and internal tooling on the Microsoft Power Platform.
 
 I hold a B.S. in Computer Science from [California State University, Sacramento](https://www.csus.edu/). The useful part of that background is the overlap — I audit web applications with the instincts of someone who has had to ship and maintain them.
 
@@ -24,7 +24,7 @@ If you are hiring for DevOps, DevSecOps, application security, or digital forens
 - In 2020 I began studying at Foothill College, and returned to India three months later when the pandemic closed the campus.
 - In 2022 I returned to the United States to finish my degree at Sacramento State, graduating in 2024.
 - In 2025 I moved into security properly: an internship at Ekvayu Tech, then a contract building an 80-user Active Directory environment and a hardened SSL VPN for a chartered accountancy firm in New Delhi.
-- In 2026 I returned to Ekvayu Tech on the platform side, owning deployment pipelines across environments, OPNsense firewalls, and VLAN segmentation — the same systems I had spent the previous summer attacking.
+- In 2026 I returned to Ekvayu Tech on the platform side, building the pipeline that ships their security product and the monitoring over the containers it runs on — the same systems I had spent the previous summer attacking. I also found three critical bugs in their detonation sandbox, which was satisfying in a way I am choosing not to examine.
 
 # I Like
 

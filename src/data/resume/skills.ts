@@ -196,7 +196,29 @@ const skills: Skill[] = [
     category: ['DevOps / DevSecOps'],
   },
   {
+    title: 'GitLab CI',
+    competency: 4,
+    category: ['DevOps / DevSecOps'],
+  },
+  {
+    // Raised from 3: a hundred-plus containers across three sites is operating
+    // a fleet, not running compose files locally.
     title: 'Docker',
+    competency: 4,
+    category: ['DevOps / DevSecOps'],
+  },
+  {
+    title: 'Container Security',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
+  },
+  {
+    title: 'Prometheus',
+    competency: 3,
+    category: ['DevOps / DevSecOps'],
+  },
+  {
+    title: 'Grafana',
     competency: 3,
     category: ['DevOps / DevSecOps'],
   },
@@ -239,6 +261,40 @@ const skills: Skill[] = [
     title: 'REST API Design',
     competency: 4,
     category: ['Web Development'],
+  },
+  // The pipeline security gates, dual-categorised on purpose: they are exactly
+  // the overlap this profile is selling, and both filters should return them.
+  {
+    title: 'Semgrep',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
+  },
+  {
+    title: 'Bandit',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
+  },
+  {
+    title: 'Trivy',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
+  },
+  {
+    title: 'Checkov',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
+  },
+  {
+    title: 'Gitleaks',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
+  },
+  {
+    // Spelled out for the same reason "penetration testing" is: recruiters
+    // screen on the acronym, engineers read the phrase.
+    title: 'SAST & DAST',
+    competency: 3,
+    category: ['DevOps / DevSecOps', 'Security'],
   },
   {
     title: 'OWASP ASVS',
