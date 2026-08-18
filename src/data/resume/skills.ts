@@ -91,14 +91,17 @@ const skills: Skill[] = [
     category: ['Databases', 'Languages'],
   },
   {
+    // Shells are listed as languages *and* as DevOps tooling: they are how the
+    // pipeline and the Windows estate are actually driven, not a general-
+    // purpose language choice.
     title: 'Bash',
     competency: 4,
-    category: ['Infrastructure', 'Languages'],
+    category: ['DevOps / DevSecOps', 'Languages'],
   },
   {
     title: 'PowerShell',
     competency: 3,
-    category: ['Infrastructure', 'Languages'],
+    category: ['DevOps / DevSecOps', 'Languages'],
   },
   {
     title: 'C/C++',
@@ -164,20 +167,11 @@ const skills: Skill[] = [
     competency: 3,
     category: ['Databases'],
   },
-  // Infrastructure
+  // Infrastructure — the estate that gets run, as distinct from the tooling
+  // that builds and ships onto it, which is DevOps / DevSecOps below.
   {
     title: 'Linux',
     competency: 4,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Docker',
-    competency: 3,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Azure',
-    competency: 3,
     category: ['Infrastructure'],
   },
   {
@@ -185,22 +179,38 @@ const skills: Skill[] = [
     competency: 3,
     category: ['Infrastructure', 'Networking'],
   },
-  {
-    title: 'Git',
-    competency: 4,
-    category: ['Infrastructure'],
-  },
-  // Platform and networking, from the 2026 Ekvayu stint — deployment pipelines
-  // across environments, OPNsense, and VLAN segmentation.
+  // DevOps / DevSecOps. Mostly from the 2026 Ekvayu stint — deployment
+  // pipelines across environments — plus the container, cloud, and
+  // version-control tooling that used to sit under Infrastructure. Filtering
+  // to this category is the first thing a DevOps screen does on this page, and
+  // it previously returned two entries while Docker, Azure, and Git sat one
+  // category over.
   {
     title: 'CI/CD Pipelines',
     competency: 3,
-    category: ['DevOps', 'Infrastructure'],
+    category: ['DevOps / DevSecOps'],
   },
   {
     title: 'GitHub Actions',
     competency: 3,
-    category: ['DevOps', 'Infrastructure'],
+    category: ['DevOps / DevSecOps'],
+  },
+  {
+    title: 'Docker',
+    competency: 3,
+    category: ['DevOps / DevSecOps'],
+  },
+  {
+    // No separate "Cloud" category: it would hold this and Entra ID and read
+    // as a two-item stub next to categories with a dozen entries.
+    title: 'Azure',
+    competency: 3,
+    category: ['DevOps / DevSecOps'],
+  },
+  {
+    title: 'Git',
+    competency: 4,
+    category: ['DevOps / DevSecOps'],
   },
   {
     title: 'OPNsense',
