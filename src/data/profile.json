@@ -12,5 +12,6 @@
   "currentCity": "Jaipur, India",
   "relocatingTo": "Bangalore, Hyderabad, Pune, or Delhi NCR",
   "timezone": "IST (UTC+5:30)",
+  "timezoneOverlap": "overlaps Central European working hours; the US Eastern morning starts at 19:00 IST",
   "email": "vaibhavjain@protonmail.com"
 }

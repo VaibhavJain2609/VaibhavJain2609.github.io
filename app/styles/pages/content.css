@@ -432,7 +432,50 @@
   color: var(--color-accent);
 }
 
+/* Recruiter logistics. A compact data readout rather than prose: these are
+   filter answers, so they are set in mono at the annotation size and left
+   aligned inside a centred page, which is what makes them scannable in a
+   glance instead of read. Labels sit in a fixed column on wide viewports and
+   stack above their values below it. */
+.contact-facts {
+  max-width: var(--measure-read);
+  margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-fact {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0 1rem;
+  align-items: baseline;
+}
+
+.contact-fact dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.contact-fact dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-fg);
+}
+
 @media (max-width: 735px) {
+  .contact-fact {
+    grid-template-columns: 1fr;
+    gap: 0.125rem;
+  }
+
   .about-section-nav {
     top: var(--header-height-mobile);
     flex-wrap: nowrap;

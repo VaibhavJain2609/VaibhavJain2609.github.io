@@ -31,6 +31,39 @@ export default function ContactPage() {
           </div>
 
           <ContactIcons includeEmail={false} />
+
+          {/* The three facts a recruiter has to establish before writing the
+              email, answered before they ask. All of them already lived in
+              `profile.json` and none of them were rendered anywhere: the
+              timezone and the open-to line were dead data, and relocation
+              was stated only in the hero, which a visitor who lands straight
+              on /contact from a search result never sees. Left unstated, a
+              location filter reads "Jaipur" — a city explicitly not being
+              targeted — and answers a question nobody asked.
+
+              The overlap clause is deliberately specific rather than the
+              usual "flexible hours": a remote screen is deciding whether
+              standups are possible, and a number they can check against
+              their own calendar is the only version of that claim worth
+              making. */}
+          <dl className="contact-facts">
+            <div className="contact-fact">
+              <dt>Based in</dt>
+              <dd>
+                {profile.currentCity} — relocating to {profile.relocatingTo}
+              </dd>
+            </div>
+            <div className="contact-fact">
+              <dt>Hours</dt>
+              <dd>
+                {profile.timezone} — {profile.timezoneOverlap}
+              </dd>
+            </div>
+            <div className="contact-fact">
+              <dt>Open to</dt>
+              <dd>{profile.openTo}</dd>
+            </div>
+          </dl>
         </div>
       </section>
     </PageWrapper>
