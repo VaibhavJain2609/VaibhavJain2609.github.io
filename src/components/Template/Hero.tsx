@@ -23,11 +23,12 @@ export default function Hero() {
               behind him scan as a student. */}
           <p className="hero-tagline">
             {profile.headline} — I build the delivery pipeline and secure it. On
-            the build side: CI/CD pipelines promoting from development through
-            to production, Docker, Linux, and cloud and identity infrastructure
-            on Azure and Entra ID. On the security side: penetration testing and
-            VAPT against web applications — 15+ critical vulnerabilities
-            remediated at{' '}
+            the build side: a seven-stage GitLab CI pipeline where secret, SAST,
+            container, and image scanning gate every deploy, Prometheus and
+            Grafana across 100+ containers at three sites, and cloud and
+            identity infrastructure on Azure and Entra ID. On the security side:
+            penetration testing and VAPT against web applications — 15+ critical
+            vulnerabilities remediated at{' '}
             <a href="https://ekvayu.com" className="hero-highlight">
               Ekvayu Tech
             </a>{' '}

@@ -60,7 +60,7 @@ export const SHARE_IMAGE_DIMENSIONS = {
  * the sentence a human reads under the search result.
  */
 export const SITE_DESCRIPTION =
-  'Security engineer who builds the pipeline and secures it: DevSecOps and CI/CD, Docker, cloud and network security, penetration testing, VAPT, and digital forensics. M.Sc. candidate at NFSU.';
+  'Security engineer who builds the pipeline and secures it: DevSecOps and GitLab CI with SAST, secret and container scanning, plus penetration testing, VAPT, and digital forensics. M.Sc. candidate at NFSU.';
 
 // Image dimension constants
 export const PROJECT_IMAGE = {
