@@ -17,7 +17,7 @@ import { AUTHOR_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Resume',
-  description: `${AUTHOR_NAME}'s resume — application security, digital forensics, and full-stack engineering. NFSU, Ekvayu Tech, Sacramento State.`,
+  description: `${AUTHOR_NAME}'s resume — DevSecOps and delivery pipelines, CI/CD, application security, and digital forensics. NFSU, Ekvayu Tech, Sacramento State.`,
   path: '/resume/',
 });
 
@@ -27,13 +27,24 @@ export default function ResumePage() {
       <section className="resume-page">
         <header className="resume-header">
           <h1 className="resume-title">Resume</h1>
+          {/* This paragraph is the first thing read on the page a technical
+              screen opens to check the hero, so it has to answer in the hero's
+              order: build side first, security side second. It used to open
+              "Security engineer working across application security and
+              digital forensics" and never name the pipeline at all — which
+              made the hero and the resume two different candidates, and left
+              the most role-relevant work invisible to anyone who read only
+              the summary. */}
           <p className="resume-summary">
-            Security engineer working across application security and digital
-            forensics, currently reading for an M.Sc. in Digital Forensics and
-            Information Security at NFSU. I have run VAPT against a commercial
-            security product, built identity and remote-access infrastructure
-            for a firm handling confidential client records, and shipped the
-            kind of full-stack systems I now audit.
+            DevSecOps and application security engineer, currently reading for
+            an M.Sc. in Digital Forensics and Information Security at NFSU. I
+            have built a seven-stage GitLab CI pipeline where security scanning
+            gates the deploy rather than following it, run Prometheus and
+            Grafana over a container fleet across three sites, and built
+            identity and remote-access infrastructure for a firm handling
+            confidential client records. I came to it from the other side: VAPT
+            against the same commercial security product a year earlier, and the
+            full-stack systems I now audit before that.
           </p>
           {/* A recruiter's first action is to forward a PDF to a hiring
               manager. Without this they have to print the page themselves. */}
