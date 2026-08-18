@@ -72,10 +72,11 @@ export function ageAt(now: number, precision: number): string {
   return ((now - epoch) / MS_PER_YEAR).toFixed(precision);
 }
 
-/**
- * A same-width placeholder for an age readout, used for the first paint so
- * the surrounding layout does not shift when the real value arrives.
+/*
+ * There is deliberately no digit-free placeholder here any more. One used to
+ * be rendered as the live readout's first paint, which meant the static export
+ * — the version every scraper, feed reader, and recruiting tool sees — carried
+ * `--.-----------` under the label "Years writing code". `ageAt` at a
+ * build-time instant is the same width and is an actual measurement, so it
+ * serves the same layout purpose while saying something true.
  */
-export function agePlaceholder(precision: number): string {
-  return `--.${'-'.repeat(precision)}`;
-}
