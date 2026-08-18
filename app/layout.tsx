@@ -17,14 +17,12 @@ export const metadata: Metadata = {
     template: `%s | ${AUTHOR_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  // Two kinds of term live here. Most are claimed by a role, a project, or a
-  // listed skill elsewhere on the site. The infrastructure-as-code and
-  // orchestration terms — Terraform, Kubernetes — are target-role vocabulary
-  // rather than experience, and are deliberately confined to this array: no
-  // major engine ranks on `meta keywords`, so they cost nothing here, whereas
-  // the description, the hero, and `src/data/resume/skills.ts` are read by
-  // people and must stay true. Do not promote a term out of this list into
-  // those without work to back it.
+  // Every term here is claimed by a role, a project, or a listed skill
+  // elsewhere on the site. Terraform, Kubernetes, and infrastructure as code
+  // were briefly here as target-role vocabulary and were removed: keywords are
+  // inert to every major engine, so they win nothing, and a page that names a
+  // tool is a page that gets asked about it. Add them back when there is work
+  // behind them — and at that point they belong in the skills list too.
   keywords: [
     AUTHOR_NAME,
     'DevSecOps',
@@ -35,9 +33,6 @@ export const metadata: Metadata = {
     'GitHub Actions',
     'Docker',
     'containers',
-    'Kubernetes',
-    'Terraform',
-    'infrastructure as code',
     'cloud security',
     'Azure',
     'Entra ID',
