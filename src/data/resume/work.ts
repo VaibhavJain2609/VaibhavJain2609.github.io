@@ -39,7 +39,7 @@ const work: Position[] = [
       'Built a seven-stage GitLab CI pipeline in which security scanning gates the deploy rather than following it: Gitleaks for committed secrets, Bandit and Semgrep for SAST, Checkov against Dockerfiles and Compose definitions, and Trivy across both the filesystem and the built image.',
       'Fronted the pipeline with Ruff, mypy, and hadolint so a lint or type failure stops the run before anything is built, and extended it past the deploy with OWASP ZAP and smoke tests against the running service.',
       'Standardised promotion from development through to production across three locations, applying the same gates to every environment rather than to production alone.',
-      'Stood up Prometheus and Grafana monitoring across 100+ containers running at three locations.',
+      'Stood up Prometheus and Grafana monitoring across 100+ Docker Compose containers running at three locations.',
       "Found three critical defects in the product's detonation sandbox, which runs each submitted file or URL in its own container: container names were drawn from a reused numeric sequence, so one name identified different samples over time and neither metrics nor logs could be attributed to the analysis that produced them.",
       'Configured and hardened OPNsense firewalls, covering rule design and security policy configuration.',
       'Designed and implemented VLAN segmentation to isolate network segments and limit lateral movement.',

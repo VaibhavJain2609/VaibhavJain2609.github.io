@@ -129,11 +129,6 @@ const skills: Skill[] = [
     competency: 3,
     category: ['Web Development'],
   },
-  {
-    title: 'Angular',
-    competency: 3,
-    category: ['Web Development'],
-  },
   // Identity and access
   {
     title: 'Active Directory',
