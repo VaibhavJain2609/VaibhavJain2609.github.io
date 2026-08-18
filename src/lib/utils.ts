@@ -48,9 +48,19 @@ export const SHARE_IMAGE_DIMENSIONS = {
   height: 630,
 } as const;
 
-// Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
+/**
+ * Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
+ *
+ * Leads with the hybrid — builds the pipeline and secures it — because that is
+ * what separates this profile from either a pure DevOps or a pure AppSec one,
+ * and a search result is read left to right. Every term here is claimed
+ * elsewhere on the site by a role, a project, or a listed skill; keep it that
+ * way. Role-targeting vocabulary that is not yet backed by work belongs in the
+ * `keywords` array in `app/layout.tsx`, which no major engine ranks on, not in
+ * the sentence a human reads under the search result.
+ */
 export const SITE_DESCRIPTION =
-  'Security engineer and M.Sc. candidate in Digital Forensics and Information Security at NFSU. I break web applications, analyse malware, and build the systems I audit.';
+  'Security engineer who builds the pipeline and secures it: DevSecOps and CI/CD, Docker, cloud and network security, penetration testing, VAPT, and digital forensics. M.Sc. candidate at NFSU.';
 
 // Image dimension constants
 export const PROJECT_IMAGE = {

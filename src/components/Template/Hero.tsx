@@ -13,23 +13,27 @@ export default function Hero() {
             <span className="hero-name">{profile.name}</span>
           </h1>
 
-          {/* Leads with the professional identity, not the enrolment status.
-              A recruiter reads the nouns in the first clause, and opening with
-              "M.Sc. candidate" made a security engineer with five roles behind
-              him scan as a student. `role` and `employer` still state the true
-              current position in the footer and in schema.org. */}
+          {/* Leads with the hybrid, because that is the thing that is hard to
+              hire for: someone who builds the delivery pipeline and also
+              secures it. The two halves are stated as two halves — build side
+              first — so a DevOps screen and an AppSec screen each find their
+              vocabulary in the first two sentences rather than one of them
+              having to read to the end. Enrolment status stays last; opening
+              with "M.Sc. candidate" made a security engineer with five roles
+              behind him scan as a student. */}
           <p className="hero-tagline">
-            {profile.headline} working across application security, digital
-            forensics, and the infrastructure under both. I run penetration
-            testing and VAPT against web applications — 15+ critical
-            vulnerabilities remediated at{' '}
+            {profile.headline} — I build the delivery pipeline and secure it. On
+            the build side: CI/CD pipelines promoting from development through
+            to production, Docker, Linux, and cloud and identity infrastructure
+            on Azure and Entra ID. On the security side: penetration testing and
+            VAPT against web applications — 15+ critical vulnerabilities
+            remediated at{' '}
             <a href="https://ekvayu.com" className="hero-highlight">
               Ekvayu Tech
             </a>{' '}
-            — do memory forensics and incident response on compromised systems,
-            and build the platform underneath: CI/CD pipelines, OPNsense
-            firewalls and VLAN segmentation, and an 80-user Active Directory and
-            hardened SSL VPN estate from scratch. Currently an {profile.role} at{' '}
+            — OPNsense firewalls and VLAN segmentation, and memory forensics and
+            incident response on compromised systems. Currently an{' '}
+            {profile.role} at{' '}
             <a href="https://www.nfsu.ac.in/" className="hero-highlight">
               {profile.employer}
             </a>
