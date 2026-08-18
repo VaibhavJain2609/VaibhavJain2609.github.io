@@ -38,8 +38,8 @@ With [GitHub CLI](https://cli.github.com/) and
 [nvm](https://github.com/nvm-sh/nvm) installed:
 
 ```bash
-git clone https://github.com/vaibhavjain2609/personal-site.git
-cd personal-site
+git clone https://github.com/VaibhavJain2609/vaibhavjain2609.github.io.git
+cd vaibhavjain2609.github.io
 nvm install
 npm ci
 npm run dev

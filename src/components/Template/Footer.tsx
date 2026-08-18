@@ -25,8 +25,18 @@ export default function Footer() {
             <p className="footer-role">{currentRole}</p>
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
+              {/* This must be the repository this site is actually built and
+                  deployed from — `vaibhavjain2609.github.io`, the `site`
+                  remote. It pointed at `vaibhavjain2609/personal-site` for a
+                  long time, which is an untouched fork of the upstream
+                  template: its README still welcomes you to the original
+                  author's site, offers his support address, and describes a
+                  create-react-app and SCSS stack that `/projects` contradicts
+                  in the same breath. A "Source" link is an invitation to
+                  verify; sending it somewhere that disproves the page is worse
+                  than not offering one. */}
               <a
-                href="https://github.com/vaibhavjain2609/personal-site"
+                href="https://github.com/VaibhavJain2609/vaibhavjain2609.github.io"
                 target="_blank"
                 rel="noopener noreferrer"
               >
