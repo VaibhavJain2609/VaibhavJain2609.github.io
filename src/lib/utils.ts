@@ -11,8 +11,17 @@ import profile from '@/data/profile.json';
  * JSON-LD, and every page's `alternates.canonical` derive from it. To move the
  * site to a custom domain, change this value and add a matching `public/CNAME`
  * — nothing else needs to change.
+ *
+ * This must be the origin the site is actually *served* from, not the one it
+ * is deployed to. `public/CNAME` pointed GitHub Pages at the custom domain
+ * while this constant still said `vaibhavjain2609.github.io`, so every
+ * canonical, `og:url`, JSON-LD `@id`, and sitemap entry named an origin that
+ * 301s to somewhere else — crawlers see a self-referencing canonical pointing
+ * off-site, and scrapers fetch the share image through a redirect. Keep this,
+ * `public/CNAME`, and `homepage` in `package.json` (which `verify-export`
+ * reads as the expected origin) in agreement.
  */
-export const SITE_URL = 'https://vaibhavjain2609.github.io';
+export const SITE_URL = 'https://jainvaibhav.me';
 export const AUTHOR_NAME = profile.name;
 /**
  * The portrait. Used for JSON-LD `image`, where the value should be a picture
@@ -39,9 +48,19 @@ export const SHARE_IMAGE_DIMENSIONS = {
   height: 630,
 } as const;
 
-// Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
+/**
+ * Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
+ *
+ * Leads with the hybrid — builds the pipeline and secures it — because that is
+ * what separates this profile from either a pure DevOps or a pure AppSec one,
+ * and a search result is read left to right. Every term here is claimed
+ * elsewhere on the site by a role, a project, or a listed skill; keep it that
+ * way. Role-targeting vocabulary that is not yet backed by work belongs in the
+ * `keywords` array in `app/layout.tsx`, which no major engine ranks on, not in
+ * the sentence a human reads under the search result.
+ */
 export const SITE_DESCRIPTION =
-  'Security engineer and M.Sc. candidate in Digital Forensics and Information Security at NFSU. I break web applications, analyse malware, and build the systems I audit.';
+  'Security engineer who builds the pipeline and secures it: DevSecOps and CI/CD, Docker, cloud and network security, penetration testing, VAPT, and digital forensics. M.Sc. candidate at NFSU.';
 
 // Image dimension constants
 export const PROJECT_IMAGE = {

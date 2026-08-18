@@ -17,14 +17,34 @@ export const metadata: Metadata = {
     template: `%s | ${AUTHOR_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  // Every term here is claimed by a role, a project, or a listed skill
+  // elsewhere on the site. Terraform, Kubernetes, and infrastructure as code
+  // were briefly here as target-role vocabulary and were removed: keywords are
+  // inert to every major engine, so they win nothing, and a page that names a
+  // tool is a page that gets asked about it. Add them back when there is work
+  // behind them — and at that point they belong in the skills list too.
   keywords: [
     AUTHOR_NAME,
+    'DevSecOps',
+    'DevOps engineer',
     'application security',
+    'CI/CD',
+    'CI/CD pipelines',
+    'GitHub Actions',
+    'Docker',
+    'containers',
+    'cloud security',
+    'Azure',
+    'Entra ID',
+    'Active Directory',
+    'Linux',
+    'network security',
+    'firewall configuration',
+    'penetration testing',
+    'VAPT',
     'digital forensics',
     'incident response',
     'malware analysis',
-    'penetration testing',
-    'VAPT',
     'security engineer',
     'NFSU',
   ],
