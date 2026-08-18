@@ -8,6 +8,14 @@ export interface Course {
   number?: string;
   link: string;
   university: string;
+  /**
+   * Optional. What the paper is actually used for, in the vocabulary of the
+   * work rather than the syllabus. A course title on its own is a claim about
+   * attendance; the consequence clause is what turns it into a claim about
+   * capability, and it is the only thing on this list that survives a reader
+   * who does not know the programme. Rows without one render as before.
+   */
+  consequence?: string;
 }
 
 const NFSU_PROGRAMME =
@@ -20,16 +28,22 @@ const courses: Course[] = [
     title: 'Web Application Security',
     link: NFSU_PROGRAMME,
     university: 'NFSU',
+    consequence:
+      'OWASP ASVS-aligned; the source of the DAST stage and the ZAP smoke tests at the end of the delivery pipeline.',
   },
   {
     title: 'Malware Analysis and Forensics',
     link: NFSU_PROGRAMME,
     university: 'NFSU',
+    consequence:
+      'Static and behavioural analysis of untrusted binaries — the same triage reasoning behind Trivy and Semgrep severity gates, and behind deciding which findings actually block a deploy.',
   },
   {
     title: 'Network Security Forensics',
     link: NFSU_PROGRAMME,
     university: 'NFSU',
+    consequence:
+      'Packet-level east-west traffic analysis, used to verify that VLAN segmentation holds in practice rather than on the diagram.',
   },
   {
     title: 'Computer Networking Fundamentals',

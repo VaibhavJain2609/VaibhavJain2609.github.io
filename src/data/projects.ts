@@ -16,11 +16,45 @@ export interface Project {
 
 const entries: Project[] = [
   {
+    // No public repository yet: this is a client system, and the pipeline
+    // definition is theirs. The card describes the shape and the decisions
+    // rather than linking source that cannot be published. A sanitised,
+    // generic version is the single highest-value artifact still missing from
+    // this page — when it exists, its link belongs here.
+    title: 'DevSecOps Delivery Pipeline',
+    subtitle: 'Seven-stage GitLab CI pipeline where scanning gates the deploy',
+    date: '2026-07-31',
+    desc: 'A delivery pipeline for a commercial security product, built so that security scanning blocks the deploy rather than reporting on it afterwards. Ruff, mypy, and hadolint run first, so a lint or type failure stops the run before anything is built. Gitleaks then checks for committed secrets, Bandit and Semgrep for SAST, Checkov against Dockerfiles and Compose definitions, and Trivy across both the filesystem and the built image. OWASP ZAP and smoke tests run against the deployed service. The same gates apply to development, staging, and production across three locations — the point being that a gate only production enforces is a gate that gets discovered late.',
+    tech: [
+      'GitLab CI',
+      'Docker',
+      'Gitleaks',
+      'Semgrep',
+      'Bandit',
+      'Checkov',
+      'Trivy',
+      'OWASP ZAP',
+    ],
+    featured: true,
+  },
+  {
+    // Filed as observability rather than security on purpose. The finding was
+    // reached from the monitoring side — the numbers did not reconcile — and
+    // its consequence is that no measurement of the system could be trusted,
+    // which is a platform problem before it is a security one.
+    title: 'Sandbox Attribution Failure',
+    subtitle: 'An observability defect found from the monitoring side',
+    date: '2026-07-15',
+    desc: 'While instrumenting a malware detonation sandbox — each submitted file or URL runs in its own container — the metrics did not reconcile with the sample counts. Container names turned out to be drawn from a reused numeric sequence, so a single name identified different samples at different times. Neither metrics nor logs could be attributed back to the analysis that produced them, which means no measurement of throughput, failure rate, or detonation outcome was trustworthy, and historical data could not be reconstructed. Two further critical defects surfaced from the same investigation.',
+    tech: ['Prometheus', 'Grafana', 'Docker', 'Observability'],
+    featured: true,
+  },
+  {
     title: 'btrfsparser',
     subtitle: 'Forensic BTRFS filesystem parser',
     link: 'https://github.com/VaibhavJain2609/btrfsparser',
     date: '2026-02-11',
-    desc: 'Recovers filesystem metadata and file contents from raw BTRFS disk images. Parses the superblock, walks the chunk tree to translate logical addresses to physical ones, traverses B-trees for inodes and directory entries, and reassembles files from inline, compressed, and regular extents — validating CRC32C checksums along the way. Ships a full technical walkthrough in the repository.',
+    desc: 'Recovers filesystem metadata and file contents from raw BTRFS disk images. Parses the superblock, walks the chunk tree to translate logical addresses to physical ones, traverses B-trees for inodes and directory entries, and reassembles files from inline, compressed, and regular extents — validating CRC32C checksums along the way. Ships a full technical walkthrough in the repository. Reading on-disk extent and B-tree structure directly is the same skill that makes overlay2 layer analysis and volume-level container incident response tractable.',
     tech: ['Python', 'Filesystem Forensics', 'Reverse Engineering'],
     featured: true,
   },

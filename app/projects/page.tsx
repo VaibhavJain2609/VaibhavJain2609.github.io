@@ -15,7 +15,13 @@ import { AUTHOR_NAME } from '@/lib/utils';
 
 const PROJECTS_URL = `${SITE_URL}/projects/`;
 
-const PROJECTS_DESCRIPTION = `Security and engineering projects by ${AUTHOR_NAME} — application security, digital forensics, and full-stack systems.`;
+// This page is the one a technical reviewer opens to check whether the hero
+// is true, so it has to answer in the hero's own vocabulary. It used to lead
+// with "application security, digital forensics, and full-stack systems" —
+// which reads as a competing identity rather than a supporting one, and left
+// the pipeline work, the thing being sold, unnamed on the page meant to
+// evidence it.
+const PROJECTS_DESCRIPTION = `Delivery pipelines, security engineering, and systems work by ${AUTHOR_NAME} — CI/CD and DevSecOps, application security, digital forensics, and the full-stack systems underneath.`;
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Projects',
@@ -47,8 +53,9 @@ export default function ProjectsPage() {
         <header className="projects-header">
           <h1 className="page-title">Projects</h1>
           <p className="page-subtitle">
-            Systems I have built and broken — application security, digital
-            forensics, and the full-stack work underneath both
+            Pipelines and systems I have built, and systems I have broken —
+            CI/CD and DevSecOps, application security, digital forensics, and
+            the full-stack work underneath all of it
           </p>
         </header>
 

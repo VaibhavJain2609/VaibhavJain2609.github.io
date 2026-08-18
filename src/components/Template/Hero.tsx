@@ -43,9 +43,18 @@ export default function Hero() {
 
           {/* Location and availability are pass/fail filters in a recruiter's
               first pass. Left to inference, silence reads as "not looking" or
-              "not eligible" as readily as it reads as either being untrue. */}
+              "not eligible" as readily as it reads as either being untrue.
+
+              Relocation is here for the same reason, and it is the one that
+              actually decides things: the roles being targeted are in cities
+              this one is not, so a location filter reads "Jaipur" and stops.
+              Stating the destination is what keeps the filter from answering
+              a question that was never asked. */}
           <p className="hero-status">
             <span className="hero-status-item">{profile.currentCity}</span>
+            <span className="hero-status-item">
+              Relocating to {profile.relocatingTo}
+            </span>
             <span className="hero-status-item hero-status-item--live">
               {profile.availability}
             </span>
