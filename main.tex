@@ -19,7 +19,16 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+
+% `glyphtounicode` calls \pdfglyphtounicode, a pdfTeX primitive, so loading it
+% unconditionally makes this file compile under pdflatex and nothing else --
+% XeTeX (which is what tectonic runs) dies on line 7 of it. Guarded, the source
+% builds on either engine and still emits the ToUnicode map that keeps the PDF
+% text-extractable, and therefore ATS-parsable, wherever pdfTeX is available.
+% Verify extraction with `pdftotext` after a rebuild, whichever engine ran.
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+\fi
 
 
 %----------FONT OPTIONS----------
@@ -59,7 +68,9 @@
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -117,6 +128,7 @@
     \small Jaipur, India $|$
     \href{tel:+918527671247}{\underline{+91 8527671247}} $|$
     \href{mailto:vaibhavjain@protonmail.com}{\underline{vaibhavjain@protonmail.com}} \\ \vspace{1pt}
+    \small Relocating to Bangalore, Hyderabad, Pune, or Delhi NCR \\ \vspace{1pt}
     \small \href{https://linkedin.com/in/jain-vaibhav}{\underline{linkedin.com/in/jain-vaibhav}} $|$
     \href{https://github.com/vaibhavjain2609}{\underline{github.com/vaibhavjain2609}} $|$
     \href{https://jainvaibhav.me/}{\underline{jainvaibhav.me}} \\
@@ -127,7 +139,7 @@
 \section{Education}
   \resumeSubHeadingListStart
   \resumeSubheading{National Forensic Sciences University}{Jaipur, India}{M.Sc. Digital Forensics and Information Security}
-  {Graduation: June 2027}
+  {Expected June 2027}
    \resumeItemListStart
         \resumeItem{\textbf{Coursework:} Web Application Security, Malware Analysis and Forensics, and Network Security Forensics}
     \resumeItemListEnd
@@ -156,7 +168,7 @@
             \resumeItemListStart
             \resumeItem{Built a 7-stage GitLab CI/CD pipeline where 5 security scanners gate the deploy rather than follow it: Gitleaks (secrets), Bandit and Semgrep (SAST), Checkov (Dockerfile and Compose IaC), and Trivy (filesystem and image).}
             \resumeItem{Enforced identical gates across all 3 environments, and fronted the pipeline with Ruff, mypy, and hadolint so lint or type failures halt the run pre-build; extended it post-deploy with OWASP ZAP DAST and smoke tests.}
-            \resumeItem{Instrumented 100+ containers across 3 locations with Prometheus and Grafana, and hardened OPNsense firewalls with VLAN segmentation to limit lateral movement.}
+            \resumeItem{Instrumented 100+ Docker Compose containers across 3 sites with Prometheus and Grafana, and hardened OPNsense firewalls with VLAN segmentation to limit lateral movement.}
             \resumeItem{Uncovered 3 critical defects in the product's malware detonation sandbox, where a reused container-name sequence left metrics and logs unattributable to the sample that produced them.}
             \resumeItem{Invited back after a prior security internship to own delivery for the same product previously tested from the offensive side.}
             \resumeItemListEnd
@@ -193,11 +205,11 @@
                 \resumeItem{Designed a multi-tenant clinic architecture with tenant-scoped data access, and enforced ABDM-compliant cross-clinic data sharing through a patient consent system with link codes, approval workflows, and revocation support.}
                 \resumeItem{Resolved 12+ production issues including N+1 queries, race conditions, and security misconfigurations to improve API reliability and security.}
                 \resumeItemListEnd
-     % \resumeProjectHeading {\textbf{\href{https://github.com/VaibhavJain2609/btrfsparser}{btrfsparser \faExternalLink}} $|$ \emph{Python, Filesystem Forensics, Reverse Engineering}}{Feb 2026}
-     %       \resumeItemListStart
-     %           \resumeItem{Recovered deleted files and metadata from raw BTRFS disk images by parsing the superblock, walking the chunk tree to map logical to physical addresses, and traversing B-trees for inodes and directory entries.}
-     %           \resumeItem{Reassembled files across 3 extent types (inline, compressed, and regular) while validating CRC32C checksums to guarantee forensic integrity.}
-     %           \resumeItemListEnd
+     \resumeProjectHeading {\textbf{\href{https://github.com/VaibhavJain2609/btrfsparser}{btrfsparser \faExternalLink}} $|$ \emph{Python, Filesystem Forensics, Reverse Engineering}}{Feb 2026}
+            \resumeItemListStart
+                \resumeItem{Recovered deleted files and metadata from raw BTRFS disk images by parsing the superblock, walking the chunk tree to map logical to physical addresses, and traversing B-trees for inodes and directory entries.}
+                \resumeItem{Reassembled files across 3 extent types (inline, compressed, and regular) while validating CRC32C checksums to guarantee forensic integrity.}
+                \resumeItemListEnd
      \resumeProjectHeading {\textbf{{KK Society}} $|$ \emph{Next.js, Spring Boot, PostgreSQL, TypeScript, Docker, Auth0}}{May 2025 -- Dec 2025}
             \resumeItemListStart
                 \resumeItem{Audited and enforced Role-Based Access Control and rate limiting across 90+ API endpoints to mitigate broken access control and improve resilience against DoS attacks.}
@@ -230,7 +242,7 @@
      \textbf{DevSecOps}{: GitLab CI, GitHub Actions, Docker, Semgrep, Bandit, Trivy, Checkov, Gitleaks, SAST/DAST, Prometheus, Grafana, Azure} \\
      \textbf{Security Tools}{: Burp Suite, OWASP ZAP, Nessus, Nmap, Wireshark, Volatility 3, Autopsy, OWASP Top 10, OWASP ASVS} \\
      \textbf{Infrastructure \& Identity}{: Active Directory, Entra ID (Azure AD), Keycloak, Auth0, RBAC, Sophos XGS, OPNsense, VLAN Segmentation, Linux} \\
-     \textbf{Frameworks \& Tools}{: Next.js, React, FastAPI, Spring Boot, Angular, PostgreSQL, Redis, Git} \\
+     \textbf{Frameworks \& Tools}{: Next.js, React, FastAPI, Spring Boot, PostgreSQL, Redis, Git} \\
      % \textbf{Soft Skills: }{Critical Thinking, Leadership, Organizational, Initiative, Teamwork, Bilingual (Hindi + English)}
      \textbf{Certifications}{: Microsoft SC-900 Security, Compliance and Identity Fundamentals (In Progress, target Nov 2026)}
     }}
