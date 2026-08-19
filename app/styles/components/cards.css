@@ -580,3 +580,27 @@
   color: var(--color-fg);
   line-height: var(--leading-snug);
 }
+
+/* A consequence clause is a third child in a two-column grid, so it has to be
+   placed explicitly or it drops into the course-code gutter. It sits under the
+   title, in the title's column, and the row stops centring — with two lines of
+   differing height, centred rows read as drifting rather than aligned. */
+.course-container a:has(.course-consequence) {
+  align-items: start;
+  padding: 0.5rem 0;
+}
+
+.courses .course-consequence {
+  grid-column: 2;
+  display: block;
+  max-width: var(--measure-read);
+  margin: 0.2rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-fg-light);
+  line-height: var(--leading-normal);
+}
+
+.course-container a:not(:has(.course-number)) .course-consequence {
+  grid-column: 1;
+}

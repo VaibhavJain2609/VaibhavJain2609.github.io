@@ -12,6 +12,12 @@ export default function Course({ data }: CourseProps) {
             guard those rows rendered a literal "undefined:" prefix. */}
         {data.number && <span className="course-number">{data.number}:</span>}
         <span className="course-name">{data.title}</span>
+        {/* Where a paper has one, the consequence clause carries the whole
+            value of the row: it says what the coursework is used for rather
+            than that it was taken. */}
+        {data.consequence && (
+          <span className="course-consequence">{data.consequence}</span>
+        )}
       </a>
     </li>
   );
