@@ -2,17 +2,20 @@
 
 import { type RefObject, useEffect, useRef } from 'react';
 
-import { ageAt, ageIntervalFor, agePlaceholder } from '@/lib/telemetry';
+import { ageAt, ageIntervalFor } from '@/lib/telemetry';
 
 import usePrefersReducedMotion from './usePrefersReducedMotion';
 
 /**
  * A live age readout, written straight to the DOM.
  *
- * Returns a ref to attach to the element that shows the reading. Render
- * `agePlaceholder(precision)` as that element's content: it is fixed-width and
- * digit-free, so server and client markup agree and the readout does not reflow
- * when the first real value lands.
+ * Returns a ref to attach to the element that shows the reading. Whatever the
+ * caller renders as that element's content is the pre-JavaScript state: it has
+ * to be the same string on the server and on the client, and the same width as
+ * a reading, so the readout does not reflow when the first live value lands. A
+ * build-time reading at the same precision satisfies both — see
+ * `Stats/YearsCoding.tsx`. The hook restores that content on unmount rather
+ * than assuming what it was.
  *
  * The ticked value is assigned to `textContent` rather than held in state. At
  * `AGE_PRECISION_FULL` the last digit turns over roughly every 0.32ms, so the
@@ -45,6 +48,10 @@ export default function useLiveAge<T extends HTMLElement = HTMLSpanElement>(
     if (!node) {
       return;
     }
+
+    // Captured before the first tick overwrites it. This is the content React
+    // rendered, which is what unmount has to put back.
+    const initial = node.textContent ?? '';
 
     const tick = () => {
       node.textContent = ageAt(Date.now(), precision);
@@ -79,8 +86,10 @@ export default function useLiveAge<T extends HTMLElement = HTMLSpanElement>(
       clearInterval(timer);
       document.removeEventListener('visibilitychange', sync);
       // Hand the element back in the state React thinks it is in, so a later
-      // remount does not inherit a stale reading.
-      node.textContent = agePlaceholder(precision);
+      // remount does not inherit a stale reading. Read from the node rather
+      // than reconstructed, because the hook does not decide what the caller
+      // rendered here.
+      node.textContent = initial;
     };
   }, [precision, prefersReducedMotion]);
 

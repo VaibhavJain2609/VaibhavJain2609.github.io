@@ -5,7 +5,6 @@ import {
   AGE_PRECISION_FULL,
   ageAt,
   ageIntervalFor,
-  agePlaceholder,
   CODING_SINCE,
   MS_PER_YEAR,
 } from '../telemetry';
@@ -55,15 +54,20 @@ describe('ageIntervalFor', () => {
   });
 });
 
-describe('agePlaceholder', () => {
-  it('matches the width of a real reading so the layout cannot shift', () => {
+describe('ageAt as the pre-JavaScript reading', () => {
+  it('is the same width at every instant, so the live tick cannot reflow it', () => {
     const epoch = new Date(CODING_SINCE).getTime();
-    const reading = ageAt(epoch + MS_PER_YEAR * 36, COMPACT_PRECISION);
+    const built = ageAt(epoch + MS_PER_YEAR * 15, AGE_PRECISION_FULL);
+    const later = ageAt(epoch + MS_PER_YEAR * 15.9, AGE_PRECISION_FULL);
 
-    expect(agePlaceholder(COMPACT_PRECISION)).toHaveLength(reading.length);
+    expect(built).toHaveLength(later.length);
   });
 
-  it('contains no digits, so it cannot be mistaken for a value', () => {
-    expect(agePlaceholder(AGE_PRECISION_FULL)).not.toMatch(/\d/);
+  it('reads as a number, which a digit-free placeholder did not', () => {
+    const epoch = new Date(CODING_SINCE).getTime();
+
+    expect(ageAt(epoch + MS_PER_YEAR * 15, AGE_PRECISION_FULL)).toMatch(
+      /^\d+\.\d+$/,
+    );
   });
 });

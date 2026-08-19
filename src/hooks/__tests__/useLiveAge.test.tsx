@@ -1,18 +1,32 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { ageAt, agePlaceholder } from '@/lib/telemetry';
+import { ageAt, CODING_SINCE, MS_PER_YEAR } from '@/lib/telemetry';
 import useLiveAge from '../useLiveAge';
 
 const TEST_PRECISION = 8;
+
+/**
+ * Stands in for the build-time reading a caller renders as the element's
+ * content. Fixed instead of read from the clock so it is distinguishable from
+ * anything the hook writes.
+ */
+const BUILT_AT = new Date(CODING_SINCE).getTime() + MS_PER_YEAR * 15;
+const BUILT_READING = ageAt(BUILT_AT, TEST_PRECISION);
 
 function LiveAge({ precision = TEST_PRECISION }: { precision?: number }) {
   const ref = useLiveAge<HTMLSpanElement>(precision);
 
   return (
     <span data-testid="live-age" ref={ref}>
-      {agePlaceholder(precision)}
+      {ageAt(BUILT_AT, precision)}
     </span>
   );
 }
@@ -45,16 +59,19 @@ describe('useLiveAge', () => {
     vi.useRealTimers();
   });
 
-  it('renders a fixed-width placeholder on the server', () => {
+  // The static export is what every reader without JavaScript gets, and that
+  // is most automated readers. It used to carry `--.--------` under a label
+  // promising a measured number.
+  it('carries a real, same-width reading on the server', () => {
     const html = renderToStaticMarkup(<LiveAge />);
     const live = html.match(/data-testid="live-age">([^<]*)</)?.[1];
 
-    expect(live).toBeDefined();
-    expect(live).not.toMatch(/\d/);
+    expect(live).toBe(BUILT_READING);
+    expect(live).toMatch(/^\d+\.\d+$/);
     expect(live).toHaveLength(ageAt(Date.now(), TEST_PRECISION).length);
   });
 
-  it('replaces the placeholder with a live reading', () => {
+  it('replaces the build-time reading with a live one', () => {
     render(<LiveAge />);
 
     act(() => {
@@ -126,7 +143,7 @@ describe('useLiveAge', () => {
 
       return (
         <span data-testid="live-age" ref={ref}>
-          {agePlaceholder(TEST_PRECISION)}
+          {ageAt(BUILT_AT, TEST_PRECISION)}
         </span>
       );
     }
@@ -153,5 +170,23 @@ describe('useLiveAge', () => {
     unmount();
 
     expect(clearInterval).toHaveBeenCalled();
+  });
+
+  it('restores whatever the caller rendered, not a placeholder of its own', () => {
+    // The hook writes out of band, so React does not know the text changed. If
+    // unmount left the live reading behind, a remount would inherit a stale
+    // one — and the hook has no business deciding what the content should be.
+    render(<LiveAge />);
+    const node = screen.getByTestId('live-age');
+
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
+    expect(node.textContent).not.toBe(BUILT_READING);
+
+    // `render` returns a fresh container each call, so unmount the tracked one.
+    cleanup();
+
+    expect(node.textContent).toBe(BUILT_READING);
   });
 });

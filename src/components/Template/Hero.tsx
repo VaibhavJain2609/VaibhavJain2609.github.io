@@ -25,10 +25,10 @@ export default function Hero() {
             {profile.headline} — I build the delivery pipeline and secure it. On
             the build side: a seven-stage GitLab CI pipeline where secret, SAST,
             container, and image scanning gate every deploy, Prometheus and
-            Grafana across 100+ containers at three sites, and cloud and
-            identity infrastructure on Azure and Entra ID. On the security side:
-            penetration testing and VAPT against web applications — 15+ critical
-            vulnerabilities remediated at{' '}
+            Grafana across 100+ Docker Compose containers at three sites, and
+            cloud and identity infrastructure on Azure and Entra ID. On the
+            security side: penetration testing and VAPT against web applications
+            — 15+ critical vulnerabilities remediated at{' '}
             <a href="https://ekvayu.com" className="hero-highlight">
               Ekvayu Tech
             </a>{' '}

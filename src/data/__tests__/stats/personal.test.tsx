@@ -1,8 +1,16 @@
 import { act, render } from '@testing-library/react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AGE_PRECISION_FULL, ageAt } from '@/lib/telemetry';
+
 import profile from '../../profile.json';
-import data from '../../stats/personal';
+import personalStats from '../../stats/personal';
+
+// The build-time reading the server component measures and hands down. Fixed
+// here so assertions do not depend on when the suite runs.
+const INITIAL_AGE = ageAt(Date.UTC(2026, 0, 1), AGE_PRECISION_FULL);
+const data = personalStats(INITIAL_AGE);
 
 describe('personal stats data', () => {
   beforeEach(() => {
@@ -16,6 +24,16 @@ describe('personal stats data', () => {
   it('exports an array of stats', () => {
     expect(Array.isArray(data)).toBe(true);
     expect(data.length).toBeGreaterThan(0);
+  });
+
+  it('carries the build-time reading, so the export ships a real number', () => {
+    // The static export is what a reader without JavaScript gets. This row
+    // used to reach them as `--.-----------` on the one page whose premise is
+    // that its figures are measured.
+    const codingStat = data.find((s) => s.key === 'years-coding');
+    const html = renderToStaticMarkup(<>{codingStat!.value}</>);
+
+    expect(html).toContain(INITIAL_AGE);
   });
 
   it('each stat has required properties', () => {
