@@ -16,6 +16,5 @@ export function ogProfileSnapshot(profile) {
     focus: profile.focus,
     countriesVisited: profile.countriesVisited,
     computingSince: profile.computingSince,
-    currentCity: profile.currentCity,
   };
 }

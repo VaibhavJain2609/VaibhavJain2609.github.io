@@ -36,13 +36,6 @@ describe('Personal', () => {
     ).toBeInTheDocument();
   });
 
-  it('displays current city', () => {
-    render(<Personal />);
-
-    expect(screen.getByText('Current city')).toBeInTheDocument();
-    expect(screen.getByText(profile.currentCity)).toBeInTheDocument();
-  });
-
   it('has a link for countries visited', () => {
     render(<Personal />);
 

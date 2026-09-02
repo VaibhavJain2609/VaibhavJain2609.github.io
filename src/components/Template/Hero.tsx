@@ -32,7 +32,7 @@ export default function Hero() {
             <a href="https://ekvayu.com" className="hero-highlight">
               Ekvayu Tech
             </a>{' '}
-            — OPNsense firewalls and VLAN segmentation, and memory forensics and
+            — firewall hardening and VLAN segmentation, and memory forensics and
             incident response on compromised systems. Currently an{' '}
             {profile.role} at{' '}
             <a href="https://www.nfsu.ac.in/" className="hero-highlight">
@@ -41,20 +41,12 @@ export default function Hero() {
             .
           </p>
 
-          {/* Location and availability are pass/fail filters in a recruiter's
-              first pass. Left to inference, silence reads as "not looking" or
-              "not eligible" as readily as it reads as either being untrue.
-
-              Relocation is here for the same reason, and it is the one that
-              actually decides things: the roles being targeted are in cities
-              this one is not, so a location filter reads "Jaipur" and stops.
-              Stating the destination is what keeps the filter from answering
-              a question that was never asked. */}
+          {/* Availability is a pass/fail filter in a recruiter's first pass,
+              and left to inference silence reads as "not looking" as readily
+              as it reads as that being untrue. Deliberately the only status
+              item: the row is not a place to accumulate facts about the
+              person, and where they sit is not one being volunteered. */}
           <p className="hero-status">
-            <span className="hero-status-item">{profile.currentCity}</span>
-            <span className="hero-status-item">
-              Relocating to {profile.relocatingTo}
-            </span>
             <span className="hero-status-item hero-status-item--live">
               {profile.availability}
             </span>

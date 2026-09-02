@@ -45,7 +45,7 @@ const entries: Project[] = [
     title: 'Sandbox Attribution Failure',
     subtitle: 'An observability defect found from the monitoring side',
     date: '2026-07-15',
-    desc: 'While instrumenting a malware detonation sandbox — each submitted file or URL runs in its own container — the metrics did not reconcile with the sample counts. Container names turned out to be drawn from a reused numeric sequence, so a single name identified different samples at different times. Neither metrics nor logs could be attributed back to the analysis that produced them, which means no measurement of throughput, failure rate, or detonation outcome was trustworthy, and historical data could not be reconstructed. Two further critical defects surfaced from the same investigation.',
+    desc: 'While instrumenting a container-based analysis system — each submitted job runs in its own container — the metrics did not reconcile with the job counts. Container names turned out to be drawn from a reused numeric sequence, so a single name identified different jobs at different times. Neither metrics nor logs could be attributed back to the run that produced them, which means no measurement of throughput, failure rate, or analysis outcome was trustworthy, and historical data could not be reconstructed. Two further critical defects surfaced from the same investigation.',
     tech: ['Prometheus', 'Grafana', 'Docker', 'Observability'],
     featured: true,
   },
