@@ -31,7 +31,7 @@ const work: Position[] = [
     startDate: '2026-06-12',
     endDate: '2026-07-31',
     summary: `A second stint at <a href='https://ekvayu.com'>Ekvayu Tech</a>, on the build and
-    network side rather than the offensive one. I owned the delivery pipeline — a seven-stage
+    network side. I owned the delivery pipeline — a seven-stage
     GitLab CI pipeline built as DevSecOps, where scanning gates the deploy instead of following
     it — along with monitoring for the container fleet and the firewall and segmentation work
     underneath it.`,
@@ -40,8 +40,8 @@ const work: Position[] = [
       'Fronted the pipeline with Ruff, mypy, and hadolint so a lint or type failure stops the run before anything is built, and extended it past the deploy with OWASP ZAP and smoke tests against the running service.',
       'Standardised promotion from development through to production across three locations, applying the same gates to every environment rather than to production alone.',
       'Stood up Prometheus and Grafana monitoring across 100+ Docker Compose containers running at three locations.',
-      "Found three critical defects in the product's detonation sandbox, which runs each submitted file or URL in its own container: container names were drawn from a reused numeric sequence, so one name identified different samples over time and neither metrics nor logs could be attributed to the analysis that produced them.",
-      'Configured and hardened OPNsense firewalls, covering rule design and security policy configuration.',
+      'Found three critical defects in a core analysis subsystem that runs each submitted job in its own container: container names were drawn from a reused numeric sequence, so one name identified different jobs over time and neither metrics nor logs could be attributed to the run that produced them.',
+      'Configured and hardened perimeter firewalls, covering rule design and security policy configuration.',
       'Designed and implemented VLAN segmentation to isolate network segments and limit lateral movement.',
     ],
   },

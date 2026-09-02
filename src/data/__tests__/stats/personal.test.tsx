@@ -64,14 +64,6 @@ describe('personal stats data', () => {
     expect(countriesStat!.link).toContain('google.com/maps');
   });
 
-  it('has a current location stat', () => {
-    const locationStat = data.find((s) => s.key === 'location');
-
-    expect(locationStat).toBeDefined();
-    expect(locationStat!.label).toBe('Current city');
-    expect(locationStat!.value).toBe(profile.currentCity);
-  });
-
   it('live readout renders and updates', () => {
     const codingStat = data.find((s) => s.key === 'years-coding');
     const AgeComponent = () => <>{codingStat!.value}</>;

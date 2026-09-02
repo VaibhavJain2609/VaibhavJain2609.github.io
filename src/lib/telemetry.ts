@@ -30,9 +30,6 @@ export const COMPUTING_SINCE = profile.computingSince;
 /** Countries visited to date. */
 export const COUNTRIES_VISITED = profile.countriesVisited;
 
-/** Current home city. */
-export const CURRENT_CITY = profile.currentCity;
-
 /** Decimal places used by the stats page — absurd precision, on purpose. */
 export const AGE_PRECISION_FULL = 11;
 
