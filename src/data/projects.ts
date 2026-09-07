@@ -16,6 +16,27 @@ export interface Project {
 
 const entries: Project[] = [
   {
+    title: 'PRAHARI',
+    subtitle: 'Statewide CCTV registry and video-analytics platform',
+    link: 'https://github.com/VaibhavJain2609/prahari',
+    image: '/images/projects/prahari.png',
+    date: '2026-09-07',
+    desc: "Built for a state police hackathon on a constraint that ruled out the obvious answer: centralising 80,000 camera feeds needs 160 Gbps of backhaul and 52 PB of monthly storage, so PRAHARI never moves the pixels. Video stays at the edge; only metadata — camera health, detections, plates, tracks, alerts — flows centrally as protobuf events across control, data, and metadata planes. A FastAPI + PostGIS registry tracks camera health from worker-reported heartbeats rather than trusting a device's own claims; a YOLO + PaddleOCR cascade emits plates with per-character confidence intact so a confusion-aware matcher, not the model, corrects OCR against a watchlist; and a correlation engine reconstructs a vehicle's timestamped route across cameras with spatio-temporal feasibility gating. Every video access writes to a hash-chained audit log with an actor and a purpose code. Deployed via Helm and Terraform onto k3s, profile-switched between a laptop and a rented GPU with no code change either side.",
+    tech: [
+      'FastAPI',
+      'Next.js',
+      'PostGIS',
+      'MapLibre GL',
+      'gRPC',
+      'YOLO',
+      'PaddleOCR',
+      'Redis',
+      'Helm',
+      'Terraform',
+    ],
+    featured: true,
+  },
+  {
     // No public repository yet: this is a client system, and the pipeline
     // definition is theirs. The card describes the shape and the decisions
     // rather than linking source that cannot be published. A sanitised,
