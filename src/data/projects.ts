@@ -21,7 +21,7 @@ const entries: Project[] = [
     link: 'https://github.com/VaibhavJain2609/prahari',
     image: '/images/projects/prahari.png',
     date: '2026-09-07',
-    desc: "Built for a state police hackathon on a constraint that ruled out the obvious answer: centralising 80,000 camera feeds needs 160 Gbps of backhaul and 52 PB of monthly storage, so PRAHARI never moves the pixels. Video stays at the edge; only metadata — camera health, detections, plates, tracks, alerts — flows centrally as protobuf events across control, data, and metadata planes. A FastAPI + PostGIS registry tracks camera health from worker-reported heartbeats rather than trusting a device's own claims; a YOLO + PaddleOCR cascade emits plates with per-character confidence intact so a confusion-aware matcher, not the model, corrects OCR against a watchlist; and a correlation engine reconstructs a vehicle's timestamped route across cameras with spatio-temporal feasibility gating. Every video access writes to a hash-chained audit log with an actor and a purpose code. Deployed via Helm and Terraform onto k3s, profile-switched between a laptop and a rented GPU with no code change either side.",
+    desc: 'Cut projected backhaul bandwidth 650x (160 Gbps to under 250 Mbps) and 30-day storage 8,600x (52 PB to 6 TB/month) for a statewide 80,000-camera surveillance rollout, by architecting a three-plane registry, detection, and correlation system for a state police hackathon that keeps video at the edge and streams only protobuf metadata — camera health, plates, tracks, alerts — centrally, deployed on Kubernetes via Helm and Terraform with a single profile switch between a laptop and a rented GPU.',
     tech: [
       'FastAPI',
       'Next.js',
@@ -34,40 +34,6 @@ const entries: Project[] = [
       'Helm',
       'Terraform',
     ],
-    featured: true,
-  },
-  {
-    // No public repository yet: this is a client system, and the pipeline
-    // definition is theirs. The card describes the shape and the decisions
-    // rather than linking source that cannot be published. A sanitised,
-    // generic version is the single highest-value artifact still missing from
-    // this page — when it exists, its link belongs here.
-    title: 'DevSecOps Delivery Pipeline',
-    subtitle: 'Seven-stage GitLab CI pipeline where scanning gates the deploy',
-    date: '2026-07-31',
-    desc: 'A delivery pipeline for a commercial security product, built so that security scanning blocks the deploy rather than reporting on it afterwards. Ruff, mypy, and hadolint run first, so a lint or type failure stops the run before anything is built. Gitleaks then checks for committed secrets, Bandit and Semgrep for SAST, Checkov against Dockerfiles and Compose definitions, and Trivy across both the filesystem and the built image. OWASP ZAP and smoke tests run against the deployed service. The same gates apply to development, staging, and production across three locations — the point being that a gate only production enforces is a gate that gets discovered late.',
-    tech: [
-      'GitLab CI',
-      'Docker',
-      'Gitleaks',
-      'Semgrep',
-      'Bandit',
-      'Checkov',
-      'Trivy',
-      'OWASP ZAP',
-    ],
-    featured: true,
-  },
-  {
-    // Filed as observability rather than security on purpose. The finding was
-    // reached from the monitoring side — the numbers did not reconcile — and
-    // its consequence is that no measurement of the system could be trusted,
-    // which is a platform problem before it is a security one.
-    title: 'Sandbox Attribution Failure',
-    subtitle: 'An observability defect found from the monitoring side',
-    date: '2026-07-15',
-    desc: 'While instrumenting a container-based analysis system — each submitted job runs in its own container — the metrics did not reconcile with the job counts. Container names turned out to be drawn from a reused numeric sequence, so a single name identified different jobs at different times. Neither metrics nor logs could be attributed back to the run that produced them, which means no measurement of throughput, failure rate, or analysis outcome was trustworthy, and historical data could not be reconstructed. Two further critical defects surfaced from the same investigation.',
-    tech: ['Prometheus', 'Grafana', 'Docker', 'Observability'],
     featured: true,
   },
   {
